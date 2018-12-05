@@ -1,13 +1,62 @@
 .message {
-    background-color: #555;
+    position: relative;
+    background-color: #666;
     color: #fff;
-    font-size: 1em;
-    padding: 0 0.6em;
-    line-height: 2.2em;
-    .left {
-        float: left;
+    font-weight: bold;
+    .content {
+        padding: 0 0.8em;
+        line-height: 3em;
+        width: 100%;
+        box-sizing: border-box;
     }
-    .right {
-        float: right;
+    &.closeable {
+        .content {
+            width: calc(100% - 3em);
+        }
+        .close-btn {
+            all: unset;
+            appearance: none;
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            width: 3em;
+            height: 3em;
+            text-align: center;
+            border: 0;
+            background-color: rgba(0, 0, 0, 0);
+            color: #fff;
+            cursor: pointer;
+            transition: background-color 0.2s;
+            &:focus {
+                background-color: rgba(0, 0, 0, 0.2);
+            }
+            svg {
+                width: 1em;
+                path {
+                    fill: #fff;
+                }
+            }
+        }
+    }
+    &.success {
+        background-color: #43a047;
+    }
+    &.info {
+        background-color: #1e88e5;
+    }
+    &.error {
+        background-color: #f44336;
+    }
+    &.warn {
+        background-color: #ffeb3b;
+        color: #0a0a0a;
+        .close-btn {
+            svg {
+                width: 1em;
+                path {
+                    fill: #000;
+                }
+            }
+        }
     }
 }
