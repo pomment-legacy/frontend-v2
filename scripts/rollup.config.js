@@ -7,22 +7,9 @@ import { uglify } from 'rollup-plugin-uglify';
 import progress from 'rollup-plugin-progress';
 import json from 'rollup-plugin-json';
 import nodent from 'rollup-plugin-nodent';
-import sass from 'rollup-plugin-sass';
-import postcss from 'postcss';
 import autoprefixer from 'autoprefixer';
 import clean from 'postcss-clean';
-
-const postCSSPlugins = [autoprefixer];
-if (process.env.NODE_ENV === 'production') {
-    postCSSPlugins.push(clean);
-}
-
-const sassConfig = {
-    output: `dist/pomment-frontend.${process.env.NODE_ENV === 'production' ? 'min.' : ''}css`,
-    processor: css => postcss(postCSSPlugins)
-        .process(css)
-        .then(result => result.css),
-};
+import postCSS from 'rollup-plugin-postcss';
 
 const base = {
     input: 'src/frontend.js',
@@ -46,7 +33,14 @@ const base = {
         }),
         commonjs(),
         json(),
-        sass(sassConfig),
+        postCSS({
+            // extract: true,
+            plugins: [
+                autoprefixer(),
+                clean(),
+            ],
+        }),
+
         eslint({
             exclude: ['**/*.html', '**/*.scss', '**/*.json'],
         }),
