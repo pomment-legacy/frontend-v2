@@ -34,7 +34,7 @@ const base = {
         commonjs(),
         json(),
         postCSS({
-            // extract: true,
+            extract: true,
             plugins: [
                 autoprefixer(),
                 clean(),
