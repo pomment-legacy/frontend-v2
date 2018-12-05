@@ -3,7 +3,7 @@ import './sass/frontend.scss';
 
 console.log('test');
 
-const a = 4;
+const a = 5;
 const b = new Pomment();
 console.log(b);
 
