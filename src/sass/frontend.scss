@@ -1,5 +1,4 @@
-html {
-    body {
-        background-color: #345678;
-    }
+.pmnt {
+    @import './compoments/message.scss';
+    @import './utils/clearfix.scss';
 }

@@ -1,0 +1,13 @@
+.message {
+    background-color: #555;
+    color: #fff;
+    font-size: 1em;
+    padding: 0 0.6em;
+    line-height: 2.2em;
+    .left {
+        float: left;
+    }
+    .right {
+        float: right;
+    }
+}

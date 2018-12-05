@@ -72,7 +72,7 @@ const base = {
 if (process.env.NODE_ENV === 'development') {
     base.watch = {
         chokidar: true,
-        include: 'src/',
+        include: 'src/**/*',
     };
 }
 
