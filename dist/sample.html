@@ -14,45 +14,49 @@
 </head>
 <body>
     <div style="max-width: 700px">
-        <div class="pmnt">
-            <div class="message closeable success">
+        <pmnt-main>
+            <pmnt-message class="closeable success">
                 <div class="content">我是一条成功消息！</div>
                 <button class="close-btn">
                     <svg viewBox="0 0 24 24">
                         <path d="M24 20.188l-8.315-8.209 8.2-8.282-3.697-3.697-8.212 8.318-8.31-8.203-3.666 3.666 8.321 8.24-8.206 8.313 3.666 3.666 8.237-8.318 8.285 8.203z">
                     </svg>
                 </button>
-            </div>
-            <div class="message closeable info">
+            </pmnt-message>
+            <pmnt-message class="closeable info">
                 <div class="content">Pomment 是一种『刚好够用』的静态博客评论框解决方案喵。静态博客越来越流行，但市面上一直缺少一种『刚好够用』的静态博客评论框解决方案喵。那些评论框不是访客评论麻烦，就是功能过于简单或臃肿喵。</div>
                 <button class="close-btn">
                     <svg viewBox="0 0 24 24">
                         <path d="M24 20.188l-8.315-8.209 8.2-8.282-3.697-3.697-8.212 8.318-8.31-8.203-3.666 3.666 8.321 8.24-8.206 8.313 3.666 3.666 8.237-8.318 8.285 8.203z">
                     </svg>
                 </button>
-            </div>
-            <div class="message closeable warn">
+            </pmnt-message>
+            <pmnt-message class="closeable warn">
                 <div class="content">我是一条警告！</div>
                 <button class="close-btn">
                     <svg viewBox="0 0 24 24">
                         <path d="M24 20.188l-8.315-8.209 8.2-8.282-3.697-3.697-8.212 8.318-8.31-8.203-3.666 3.666 8.321 8.24-8.206 8.313 3.666 3.666 8.237-8.318 8.285 8.203z">
                     </svg>
                 </button>
-            </div>
-            <div class="message closeable error">
+            </pmnt-message>
+            <pmnt-message class="closeable error">
                 <div class="content">我是一条错误消息！</div>
                 <button class="close-btn">
                     <svg viewBox="0 0 24 24">
                         <path d="M24 20.188l-8.315-8.209 8.2-8.282-3.697-3.697-8.212 8.318-8.31-8.203-3.666 3.666 8.321 8.24-8.206 8.313 3.666 3.666 8.237-8.318 8.285 8.203z">
                     </svg>
                 </button>
-            </div>
-            <div class="form">
-                <div class="message">
+            </pmnt-message>
+            <pmnt-form>
+                <pmnt-message>
                     <div class="content">我是不可关闭的一条测试消息！</div>
-                </div>
-            </div>
-        </div>
+                </pmnt-message>
+                <pmnt-avatar-item>
+                    <pmnt-avatar></pmnt-avatar>
+                    <pmnt-content>好耶，是测试内容。</pmnt-content>
+                </pmnt-avatar-item>
+            </pmnt-form>
+        </pmnt-main>
     </div>
     <!-- <script src="pomment-frontend.js"></script> -->
 </body>

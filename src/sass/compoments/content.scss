@@ -1,0 +1,24 @@
+pmnt-avatar-item {
+    min-height: 8em;
+    position: relative;
+}
+
+pmnt-avatar {
+    background-image: url(https://www.tcdw.net/static/tcdw.jpg);
+    width: 5em;
+    height: 5em;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: #fff;
+    border-radius: 50%;
+    position: absolute;
+    left: 0.5em;
+    top: 0.5em;
+    box-shadow: 0 0.5em 1.4em rgba(0,0,0,.055);
+}
+
+pmnt-content {
+    margin-left: 6em;
+    padding: 0.5em;
+}

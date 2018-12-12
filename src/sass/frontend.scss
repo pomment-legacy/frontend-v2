@@ -1,5 +1,16 @@
-.pmnt {
+pmnt-main,
+pmnt-message,
+pmnt-form,
+pmnt-avatar-item,
+pmnt-avatar,
+pmnt-content {
+    display: block;
+}
+
+pmnt-main {
     @import './compoments/main.scss';
     @import './compoments/message.scss';
+    @import './compoments/content.scss';
+    @import './compoments/form.scss';
     @import './utils/clearfix.scss';
 }
