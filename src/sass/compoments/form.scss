@@ -1,34 +1,72 @@
 pmnt-formbody {
     form {
-        .info {
-            display: flex;
-            input {
-                appearance: none;
-                display: block;
-                flex-grow: 1;
-                border: 0;
-                border-bottom: 0.16em solid #e0e0e0;
-                margin: 0.25em;
-                padding: 0.3em 0.3em;
-                font-size: 1em;
-                box-sizing: border-box;
-                color: #000;
-                box-shadow: inset 0 0 0 10em #fff;
-                transition: border-bottom-color 0.17s, box-shadow 0.17s;
-            }
-            input:focus {
+        input, textarea {
+            appearance: none;
+            display: block;
+            border: 0;
+            margin: 0.25em;
+            font-size: 1em;
+            box-sizing: border-box;
+            color: #000;
+            line-height: 1.5em;
+            &:focus {
                 outline: none;
-                box-shadow: inset 0 0 0 10em #f1f9ff;
-                border-bottom: .16em solid #4dadfc;
             }
-            input::placeholder {
-                color: rgba(0, 0, 0, 0.47);
+            &::placeholder {
+                color: #000;
                 font-weight: bold;
-                // transition: color 0.17s;
+                opacity: 0.47;
             }
-            // input:focus::placeholder {
-            //     color: rgba(0, 0, 0, 0);
-            // }
+        }
+        .info {
+            @media (min-width: 500px) {
+                display: flex;
+            }
+            @media (max-width: 499px) {
+                margin: 0 .25em;
+            }
+            input {
+                @media (min-width: 500px) {
+                    flex-grow: 1;
+                    min-width: 0;
+                }
+                @media (max-width: 499px) {
+                    width: 100%;
+                    margin: 0.25em 0;
+                }
+                padding: 0.3em 0.3em;
+                border-bottom: 0.16em solid #e0e0e0;
+                box-shadow: inset 0 0 0 10em #fff;
+                transition:
+                    border-bottom-color 0.17s,
+                    box-shadow 0.17s;
+                &:focus {
+                    border-bottom: .16em solid #4dadfc;
+                    box-shadow: inset 0 0 0 10em #f1f9ff;
+                }
+            }
+        }
+        .content-wrapper {
+            padding: 0.3em 0.3em;
+            margin: 0 0.25em;
+            border-bottom: 0.16em solid #e0e0e0;
+            background-color: #fff;
+            transition:
+                border-bottom-color 0.17s,
+                background-color 0.17s;
+            &.active {
+                border-bottom: .16em solid #4dadfc;
+                background-color: #f1f9ff;
+            }
+            textarea {
+                padding: 0;
+                margin: 0;
+                width: calc(100% - 0.5em);
+                resize: none;
+                background-color: transparent;
+                margin-top: 0px;
+                overflow: hidden;
+            }
         }
     }
 }
