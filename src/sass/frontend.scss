@@ -3,12 +3,14 @@ pmnt-message,
 pmnt-form,
 pmnt-avatar-item,
 pmnt-avatar,
-pmnt-content {
+pmnt-content,
+pmnt-formbody, {
     display: block;
 }
 
 pmnt-main {
     @import './compoments/main.scss';
+    @import './compoments/font.scss';
     @import './compoments/message.scss';
     @import './compoments/content.scss';
     @import './compoments/form.scss';

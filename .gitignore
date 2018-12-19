@@ -1,6 +1,7 @@
 dist/*.js
 dist/*.css
 dist/*.map
+dist/*.jpg
 
 # General
 .DS_Store
