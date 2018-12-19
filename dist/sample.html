@@ -61,6 +61,9 @@
                                     <input type="email" placeholder="电子邮箱*">
                                     <input type="url" placeholder="主页">
                                 </div>
+                                <div class="content-wrapper">
+                                    <textarea placeholder="评论内容*" rows="4" id="area" autocomplete="new-password" autocorrent="off"></textarea>
+                                </div>
                             </form>
                         </pmnt-formbody>
                     </pmnt-content>
@@ -68,6 +71,22 @@
             </pmnt-form>
         </pmnt-main>
     </div>
-    <!-- <script src="pomment-frontend.js"></script> -->
+    <script>
+    var area = document.getElementById('area');
+    area.value = '\n\n\n\n';
+    var minHeight = area.getBoundingClientRect().height;
+    area.style.height = minHeight + 'px';
+    area.value = '';
+    area.addEventListener('input', function () {
+        area.style.height = '0px';
+        area.style.height = Math.max(minHeight, area.scrollHeight) + 'px';
+    });
+    area.addEventListener('blur', function () {
+        area.parentElement.classList.remove('active');
+    });
+    area.addEventListener('focus', function () {
+        area.parentElement.classList.add('active');
+    });
+    </script>
 </body>
 </html>
