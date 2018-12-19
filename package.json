@@ -31,8 +31,5 @@
     "build": "NODE_ENV=production rollup -c ./scripts/rollup.config.js",
     "build-unofficial": "rollup -c ./scripts/rollup.config.js",
     "lint": "eslint --ext .js src"
-  },
-  "dependencies": {
-    "@pomment/sdk": "git+https://git.reallserver.cn/pomment/sdk-v2"
   }
 }
