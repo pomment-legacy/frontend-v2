@@ -1,6 +1,6 @@
 pmnt-formbody {
     form {
-        input, textarea {
+        input:not([type='submit']), textarea {
             appearance: none;
             display: block;
             border: 0;
@@ -22,7 +22,7 @@ pmnt-formbody {
             @media (min-width: 500px) {
                 display: flex;
             }
-            @media (max-width: 499px) {
+            @media not all and (min-width: 500px) {
                 margin: 0 .25em;
             }
             input {
@@ -30,7 +30,7 @@ pmnt-formbody {
                     flex-grow: 1;
                     min-width: 0;
                 }
-                @media (max-width: 499px) {
+                @media not all and (min-width: 500px) {
                     width: 100%;
                     margin: 0.25em 0;
                 }
@@ -67,6 +67,16 @@ pmnt-formbody {
                 margin-top: 0px;
                 overflow: hidden;
             }
+        }
+        input[type='submit'] {
+            appearance: none;
+            padding: 0.5em 1.5em;
+            margin: 0.25em;
+            border: 0;
+            border-radius: 0.3em;
+            background-color: #43a047;
+            color: #fff;
+            font-weight: bold;
         }
     }
 }

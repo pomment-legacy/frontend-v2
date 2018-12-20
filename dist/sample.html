@@ -57,13 +57,14 @@
                         <pmnt-formbody>
                             <form>
                                 <div class="info">
-                                    <input type="text" placeholder="昵称">
-                                    <input type="email" placeholder="电子邮箱*">
-                                    <input type="url" placeholder="主页">
+                                    <input type="text" placeholder="昵称" autocomplete="nickname">
+                                    <input type="email" placeholder="电子邮箱*" autocomplete="email">
+                                    <input type="url" placeholder="主页" autocomplete="url">
                                 </div>
                                 <div class="content-wrapper">
                                     <textarea placeholder="评论内容*" rows="4" id="area" autocomplete="new-password" autocorrent="off"></textarea>
                                 </div>
+                                <input type="submit" value="发布评论">
                             </form>
                         </pmnt-formbody>
                     </pmnt-content>
