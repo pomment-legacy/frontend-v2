@@ -18,10 +18,6 @@
     esutils "^2.0.2"
     js-tokens "^4.0.0"
 
-"@pomment/sdk@git+https://git.reallserver.cn/pomment/sdk-v2":
-  version "2.0.0"
-  resolved "git+https://git.reallserver.cn/pomment/sdk-v2#26037d58a31bb014ca517d7409a9f8aee9992d33"
-
 "@types/estree@0.0.39":
   version "0.0.39"
   resolved "https://registry.yarnpkg.com/@types/estree/-/estree-0.0.39.tgz#e177e699ee1b8c22d23174caaa7422644389509f"
