@@ -1,3 +1,19 @@
+pmnt-comment:nth-child(even) {
+    background-color: #f6f6f6;
+    input:not([type='submit']) {
+        box-shadow: inset 0 0 0 10em #f6f6f6;
+        &:focus {
+            box-shadow: inset 0 0 0 10em #eaeff6;
+        }
+    }
+    .content-wrapper {
+        background-color: #f6f6f6;
+        &.active {
+            background-color: #eaeff6;
+        }
+    }
+}
+
 pmnt-avatar-item {
     min-height: 8em;
     position: relative;
@@ -20,8 +36,53 @@ pmnt-avatar {
 
 pmnt-content {
     margin-left: 6em;
-    padding: 0.25em;
 }
 
 pmnt-entry {
+    margin: 0 .5em;
+    .upper {
+        line-height: 2em;
+    }
+    span.name {
+        font-weight: bold;
+    }
+    time {
+        margin-left: 1em;
+        color: rgba(0, 0, 0, 0.36);
+    }
+    .text {
+        line-height: 1.5em;
+    }
+    ul {
+        margin: 0;
+        margin-top: .6em;
+        padding: 0;
+        padding-top: .6em;
+        padding-bottom: .6em;
+        border: 0;
+        border-top: .0625rem #ccc dashed;
+        li {
+            display: inline-block;
+            &:not(:nth-child(1)) {
+                position: relative;
+            }
+            &:not(:nth-child(1)):before {
+                display: inline-block;
+                content: "|";
+                width: 1.6em;
+                text-align: center;
+                color: rgba(0, 0, 0, 0.4);
+            }
+            a {
+                color: #2f90e4;
+                text-decoration: none;
+                cursor: pointer;
+                user-select: none;
+                &:hover {
+                    color: #85beef;
+                    text-decoration: underline;
+                }
+            }
+        }
+    }
 }
