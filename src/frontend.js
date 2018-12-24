@@ -1,3 +1,7 @@
 import './sass/frontend.scss';
+import Main from './template/index.eft';
 
-console.log('test');
+class PommentWidget extends Main {
+}
+
+export default PommentWidget;

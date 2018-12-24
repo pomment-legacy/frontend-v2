@@ -892,6 +892,16 @@ ecc-jsbn@~0.1.1:
     jsbn "~0.1.0"
     safer-buffer "^2.1.0"
 
+ef-core@^0.8.1:
+  version "0.8.1"
+  resolved "https://registry.yarnpkg.com/ef-core/-/ef-core-0.8.1.tgz#8034a9638ff0c6e2c574065ade33e5ad13dd4af8"
+  integrity sha512-+NwH5SoUaon45m5X8R7teLQXZk8AimL1cluEoQTENo+JYFOWBJQ/GaiCBLRxEM2wXUrHIl+5FAc9rYBmAJe8Sg==
+
+eft-parser@^0.8.2:
+  version "0.8.2"
+  resolved "https://registry.yarnpkg.com/eft-parser/-/eft-parser-0.8.2.tgz#297e00f3b08348ee9369465816c3565506be966d"
+  integrity sha512-QkcD0UmaGZ4WnA+93iBA9dv52HkROxmvmBd8XJpr9zAPjhNKEpp87cwQe5nt51C3G76uVCXO9dc0MihrJ4EoXQ==
+
 electron-to-chromium@^1.2.7, electron-to-chromium@^1.3.86:
   version "1.3.88"
   resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.88.tgz#f36ab32634f49ef2b0fdc1e82e2d1cc17feb29e7"
@@ -3522,6 +3532,13 @@ rollup-plugin-commonjs@^9.2.0:
     magic-string "^0.25.1"
     resolve "^1.8.1"
     rollup-pluginutils "^2.3.3"
+
+rollup-plugin-eft@^0.3.0:
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/rollup-plugin-eft/-/rollup-plugin-eft-0.3.0.tgz#26f138382ab56939b011cc94b62f01d75a01b4eb"
+  integrity sha512-L6NNJnWFPBIG8pkcWwj6SJJtDQWMqwtr3P4B0mh/PhJwqdAeO3NOsNeU7FRQFYCTQsoBGMdUCVwPc4PPpnqaMg==
+  dependencies:
+    rollup-pluginutils "^2.0.1"
 
 rollup-plugin-eslint@^5.0.0:
   version "5.0.0"

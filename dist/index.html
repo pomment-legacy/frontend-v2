@@ -5,7 +5,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title></title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="pomment-frontend.css">
 </head>
 <body>
+    <div style="max-width: 800px; margin: 0 auto;" id="main"></div>
+    <script src="pomment-frontend.js"></script>
+    <script>
+    var plugin = new PommentWidget({
+        $data: {
+            server: 'http://127.0.0.1:4444',
+        },
+    });
+    plugin.$mount({target: document.getElementById("main")});
+    </script>
 </body>
 </html>

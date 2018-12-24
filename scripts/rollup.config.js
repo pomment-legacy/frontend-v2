@@ -7,6 +7,7 @@ import { uglify } from 'rollup-plugin-uglify';
 import progress from 'rollup-plugin-progress';
 import json from 'rollup-plugin-json';
 import nodent from 'rollup-plugin-nodent';
+import eft from 'rollup-plugin-eft';
 import autoprefixer from 'autoprefixer';
 import clean from 'postcss-clean';
 import postCSS from 'rollup-plugin-postcss';
@@ -40,10 +41,10 @@ const base = {
                 clean(),
             ],
         }),
-
         eslint({
-            exclude: ['**/*.html', '**/*.scss', '**/*.json'],
+            exclude: ['**/*.html', '**/*.scss', '**/*.json', '**/*.eft'],
         }),
+        eft(),
         nodent({
             promises: true,
             noRuntime: true,
