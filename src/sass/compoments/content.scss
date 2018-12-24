@@ -46,12 +46,34 @@ pmnt-entry {
     span.name {
         font-weight: bold;
     }
+    span.admin {
+        background-color: #9a9a9a;
+        color: #fff;
+        padding: 0.24em 0.4em;
+        margin-left: .25em;
+        border-radius: .25em;
+        font-size: 0.9em;
+        font-weight: bold;
+        user-select: none;
+    }
+    a.reply-of {
+        font-weight: bold;
+        color: rgba(0, 0, 0, 0.5);
+        text-decoration: none;
+        cursor: pointer;
+        user-select: none;
+        &:hover {
+            color: rgba(0, 0, 0, 0.8);
+            text-decoration: underline;
+        }
+    }
     time {
         margin-left: 1em;
         color: rgba(0, 0, 0, 0.36);
     }
     .text {
         line-height: 1.5em;
+        white-space: pre-wrap;
     }
     ul {
         margin: 0;
@@ -71,7 +93,7 @@ pmnt-entry {
                 content: "|";
                 width: 1.6em;
                 text-align: center;
-                color: rgba(0, 0, 0, 0.4);
+                color: rgba(0, 0, 0, 0.2);
             }
             a {
                 color: #2f90e4;
@@ -84,5 +106,12 @@ pmnt-entry {
                 }
             }
         }
+    }
+}
+
+pmnt-comment-nest {
+    border-left: #c1c1c1 0.25em solid;
+    pmnt-comment {
+        background-color: transparent !important;
     }
 }

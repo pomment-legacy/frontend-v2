@@ -1,7 +1,6 @@
-pmnt-formbody {
-    margin: .25em;
+pmnt-formbody, pmnt-edit {
     form {
-        input:not([type='submit']), textarea {
+        input, textarea {
             appearance: none;
             display: block;
             border: 0;
@@ -69,17 +68,30 @@ pmnt-formbody {
                 overflow: hidden;
             }
         }
-        input[type='submit'] {
+        button {
             appearance: none;
             padding: 0.5em 1.5em;
             margin: 0.25em;
             margin-top: 0.5em;
             border: 0;
             border-radius: 0.3em;
-            background-color: #43a047;
             color: #fff;
             font-size: 1em;
             font-weight: bold;
+            &.submit {
+                background-color: #8bc34a;
+            }
+            &.cancel {
+                background-color: #ef5350;
+            }
         }
     }
+}
+
+pmnt-formbody {
+    margin: 0.25em;
+}
+
+pmnt-edit {
+    padding: 0.25em;
 }

@@ -15,7 +15,7 @@
 </head>
 
 <body>
-    <div style="max-width: 800px">
+    <div style="max-width: 800px; margin: 0 auto;">
         <pmnt-main>
             <pmnt-message class="closeable success">
                 <div class="content">我是一条成功消息！</div>
@@ -68,12 +68,29 @@
                                     <textarea placeholder="评论内容，最多可输入 1000 个字符*" rows="4" id="area" autocomplete="new-password"
                                         autocorrent="off"></textarea>
                                 </div>
-                                <input type="submit" value="发布评论">
+                                <button class="submit" type="submit">发布评论</button><button class="cancel">取消</button>
                             </form>
                         </pmnt-formbody>
                     </pmnt-content>
                 </pmnt-avatar-item>
             </pmnt-form>
+            <pmnt-comment>
+                <pmnt-avatar-item>
+                    <pmnt-avatar aria-hidden="true"></pmnt-avatar>
+                    <pmnt-content>
+                        <!-- pmnt-entry 与 pmnt-edit 二选一 -->
+                        <pmnt-edit>
+                            <form>
+                                <div class="content-wrapper">
+                                    <textarea placeholder="评论内容，最多可输入 1000 个字符*" rows="4" id="area" autocomplete="new-password"
+                                        autocorrent="off"></textarea>
+                                </div>
+                                <button class="submit" type="submit">保存编辑</button><button class="cancel">取消</button>
+                            </form>
+                        </pmnt-edit>
+                    </pmnt-content>
+                </pmnt-avatar-item>
+            </pmnt-comment>
             <pmnt-comment>
                 <pmnt-avatar-item>
                     <pmnt-avatar aria-hidden="true"></pmnt-avatar>
@@ -107,6 +124,45 @@
                         </pmnt-entry>
                     </pmnt-content>
                 </pmnt-avatar-item>
+                <pmnt-comment-nest>
+                    <pmnt-comment>
+                        <pmnt-avatar-item>
+                            <pmnt-avatar aria-hidden="true"></pmnt-avatar>
+                            <pmnt-content>
+                                <pmnt-entry>
+                                    <div class="upper">
+                                        <span class="name">tcdw</span>
+                                        <a class="reply-of">（回复给 tcdw）</a>
+                                        <span class="admin">MOD</span>
+                                        <time datetime="1970-01-01T00:00:00Z">Jun 1, 1970</time>
+                                    </div>
+                                    <div class="text">Pomment 是一种『刚好够用』的静态博客评论框解决方案喵。静态博客越来越流行，但市面上一直缺少一种『刚好够用』的静态博客评论框解决方案喵。那些评论框不是访客评论麻烦，就是功能过于简单或臃肿喵。</div>
+                                    <ul>
+                                        <li><a>回复</a></li><li><a>编辑</a></li><li><a>删除</a></li>
+                                    </ul>
+                                </pmnt-entry>
+                            </pmnt-content>
+                        </pmnt-avatar-item>
+                    </pmnt-comment>
+                    <pmnt-comment>
+                        <pmnt-avatar-item>
+                            <pmnt-avatar aria-hidden="true"></pmnt-avatar>
+                            <pmnt-content>
+                                <pmnt-entry>
+                                    <div class="upper">
+                                        <span class="name">tcdw</span>
+                                        <a class="reply-of">（回复给 tcdw）</a>
+                                        <time datetime="1970-01-01T00:00:00Z">Jun 1, 1970</time>
+                                    </div>
+                                    <div class="text">Pomment 是一种『刚好够用』的静态博客评论框解决方案喵。静态博客越来越流行，但市面上一直缺少一种『刚好够用』的静态博客评论框解决方案喵。那些评论框不是访客评论麻烦，就是功能过于简单或臃肿喵。</div>
+                                    <ul>
+                                        <li><a>回复</a></li><li><a>编辑</a></li><li><a>删除</a></li>
+                                    </ul>
+                                </pmnt-entry>
+                            </pmnt-content>
+                        </pmnt-avatar-item>
+                    </pmnt-comment>
+                </pmnt-comment-nest>
             </pmnt-comment>
         </pmnt-main>
     </div>
