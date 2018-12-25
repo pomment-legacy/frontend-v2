@@ -6,6 +6,12 @@
     <title></title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="pomment-frontend.dev.css">
+    <style>
+    body {
+        margin-left: 0;
+        margin-right: 0;
+    }
+    </style>
 </head>
 <body>
     <div style="max-width: 800px; margin: 0 auto;" id="main"></div>
@@ -16,9 +22,10 @@
         url: 'https://www.tcdw.net/post/xperia-xz-premium/',
         title: 'Xperia XZ Premium',
     });
-    plugin.load({
+    plugin.$mount({
         target: document.getElementById("main"),
     });
+    plugin.load();
     </script>
 </body>
 </html>

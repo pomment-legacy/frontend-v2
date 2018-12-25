@@ -1,6 +1,7 @@
 import './sass/frontend.scss';
 import Pomment from 'pomment-sdk';
 import Main from './compoments/index.eft';
+import Bar from './compoments/bar';
 
 class PommentWidget extends Main {
     constructor(props) {
@@ -19,15 +20,31 @@ class PommentWidget extends Main {
         });
     }
 
-    async load(...mountProps) {
+    async load() {
         if (this._loaded) {
             throw Error('This instance is already loaded');
         }
         try {
             this._threadData = await this._sdk.listComments();
             this._loaded = true;
-            return super.$mount(...mountProps);
+            this._headerMessage = new Bar({
+                $data: {
+                    style: 'success',
+                    message: '加载成功！',
+                    closeable: 'closeable',
+                },
+            });
         } catch (e) {
+            this._headerMessage = new Bar({
+                $data: {
+                    style: 'error',
+                    message: '加载失败。',
+                    link: '重试',
+                },
+                $methods: {
+                    link: this.load.bind(this),
+                },
+            });
             throw e;
         }
     }
