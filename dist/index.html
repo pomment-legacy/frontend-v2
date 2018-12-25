@@ -5,18 +5,20 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title></title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="pomment-frontend.css">
+    <link rel="stylesheet" href="pomment-frontend.dev.css">
 </head>
 <body>
     <div style="max-width: 800px; margin: 0 auto;" id="main"></div>
-    <script src="pomment-frontend.js"></script>
+    <script src="pomment-frontend.dev.js"></script>
     <script>
     var plugin = new PommentWidget({
-        $data: {
-            server: 'http://127.0.0.1:4444',
-        },
+        server: 'http://127.0.0.1:5005',
+        url: 'https://www.tcdw.net/post/xperia-xz-premium/',
+        title: 'Xperia XZ Premium',
     });
-    plugin.$mount({target: document.getElementById("main")});
+    plugin.load({
+        target: document.getElementById("main"),
+    });
     </script>
 </body>
 </html>

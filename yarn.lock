@@ -2802,9 +2802,9 @@ pluralize@^7.0.0:
   integrity sha512-ARhBOdzS3e41FbkW/XWrTEtukqqLoK5+Z/4UeDaLuSW+39JPeFgs4gCGqsrJHVZX0fUrx//4OF0K1CUGwlIFow==
 
 pomment-sdk@^2.0.3:
-  version "2.0.3"
-  resolved "https://registry.yarnpkg.com/pomment-sdk/-/pomment-sdk-2.0.3.tgz#4713a8833175051680fba9fc037eeebb6b3f8023"
-  integrity sha512-WwLScRB4SOYmWi0aK26wPTB2tczONAb2nnu0Scb5OZETVIWtMZ+J/weZvsNyilPTxNi5LF80W6RC4GAnLpmbYQ==
+  version "2.0.4"
+  resolved "https://registry.yarnpkg.com/pomment-sdk/-/pomment-sdk-2.0.4.tgz#f40e23d16f0b9b6df86264a399278f3193062923"
+  integrity sha512-Q2IXaK6voqG5rykiCENS4HTI1yhINbh/cqCQbY/J/L5FDiFyf8inbEorLa4R3wb/KAwxsV8K3X7CjzPLQqG1SQ==
 
 posix-character-classes@^0.1.0:
   version "0.1.1"

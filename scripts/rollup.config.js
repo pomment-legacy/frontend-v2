@@ -15,7 +15,7 @@ import postCSS from 'rollup-plugin-postcss';
 const base = {
     input: 'src/frontend.js',
     output: {
-        file: `dist/pomment-frontend.${process.env.NODE_ENV === 'production' ? 'min.' : ''}js`,
+        file: `dist/pomment-frontend.${process.env.NODE_ENV === 'production' ? 'min.' : 'dev.'}js`,
         name: 'PommentWidget',
         format: 'umd',
         sourcemap: true,
@@ -59,9 +59,8 @@ const base = {
         replace({
             'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development'),
         }),
-        (process.env.NODE_ENV === 'production' && uglify()),
+        uglify(),
     ],
-    // external: ['@pomment/sdk'],
 };
 
 if (process.env.NODE_ENV === 'development') {
