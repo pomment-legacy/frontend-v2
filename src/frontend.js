@@ -2,6 +2,7 @@ import './sass/frontend.scss';
 import Pomment from 'pomment-sdk';
 import Main from './compoments/index.eft';
 import Bar from './compoments/bar';
+import UIStrings from './strings/content.json';
 
 class PommentWidget extends Main {
     constructor(props) {
@@ -25,21 +26,21 @@ class PommentWidget extends Main {
             throw Error('This instance is already loaded');
         }
         try {
-            this._threadData = await this._sdk.listComments();
-            this._loaded = true;
             this._headerMessage = new Bar({
                 $data: {
-                    style: 'success',
-                    message: '加载成功！',
-                    closeable: 'closeable',
+                    style: 'info',
+                    message: UIStrings.POMMENT_LOADING,
                 },
             });
+            this._threadData = await this._sdk.listComments();
+            this._loaded = true;
+            this._headerMessage = null;
         } catch (e) {
             this._headerMessage = new Bar({
                 $data: {
                     style: 'error',
-                    message: '加载失败。',
-                    link: '重试',
+                    message: UIStrings.POMMENT_LOADING_FAILED,
+                    link: UIStrings.POMMENT_LOADING_RETRY,
                 },
                 $methods: {
                     link: this.load.bind(this),
