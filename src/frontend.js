@@ -2,7 +2,7 @@ import './sass/frontend.scss';
 import Pomment from 'pomment-sdk';
 import Main from './compoments/index.eft';
 import Bar from './compoments/bar';
-import UIStrings from './strings/content.json';
+import UIStrings from './strings/content';
 
 class PommentWidget extends Main {
     constructor(props) {
