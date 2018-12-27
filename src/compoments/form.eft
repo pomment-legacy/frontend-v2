@@ -1,0 +1,39 @@
+>pmnt-form
+    -message
+    >pmnt-avatar-item
+        >pmnt-avatar
+            #style = background-image: url({{avatar}})
+            #aria-hidden = true
+        >pmnt-content
+            >pmnt-formbody
+                >form
+                    >div
+                        #class = info
+                        >input
+                            #type = text
+                            #placeholder = {{nameUI}}
+                            #autocomplete = nickname
+                        >input
+                            #type = email
+                            #placeholder = {{emailUI}}
+                            #autocomplete = email
+                        >input
+                            #type = url
+                            #placeholder = {{websiteUI}}
+                            #autocomplete = url
+                    >div
+                        #class = content-wrapper
+                        >textarea
+                            #placeholder = {{contentUI}}
+                            #rows = 4
+                            #id = area
+                            #autocomplete = new-password
+                            #autocorrent = off
+                            #style = height: {{realTimeHeight = 0}}px
+                    >button
+                        #class = submit
+                        #type = submit
+                        .{{submitUI}}
+                    >button.{{cancelHidden = hidden}}
+                        #class = cancel
+                        .{{cancelUI}}

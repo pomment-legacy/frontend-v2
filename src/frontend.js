@@ -2,6 +2,7 @@ import './sass/frontend.scss';
 import Pomment from 'pomment-sdk';
 import Main from './compoments/index.eft';
 import Bar from './compoments/bar';
+import Form from './compoments/form';
 import UIStrings from './strings/content';
 
 class PommentWidget extends Main {
@@ -34,6 +35,7 @@ class PommentWidget extends Main {
             });
             this._threadData = await this._sdk.listComments();
             this._loaded = true;
+            this._form = new Form();
             this._headerMessage = null;
         } catch (e) {
             this._headerMessage = new Bar({

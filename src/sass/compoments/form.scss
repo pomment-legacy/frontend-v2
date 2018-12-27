@@ -88,10 +88,6 @@ pmnt-formbody, pmnt-edit {
     }
 }
 
-pmnt-formbody {
-    margin: 0.25em;
-}
-
-pmnt-edit {
+pmnt-edit, pmnt-formbody form {
     padding: 0.25em;
 }
