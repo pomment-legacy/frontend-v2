@@ -1,8 +1,8 @@
 import './sass/frontend.scss';
 import Pomment from 'pomment-sdk';
 import Main from './compoments/index.eft';
-import Bar from './compoments/bar';
-import Form from './compoments/form';
+import Bar from './compoments/bar/main';
+import Form from './compoments/form/main';
 import UIStrings from './strings/content';
 
 class PommentWidget extends Main {

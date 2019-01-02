@@ -1,8 +1,8 @@
-import FormTemplate from './form/form.eft';
-import TextArea from './form/textarea.eft';
-import UIStrings from '../strings/content';
-import config from '../config';
-import replaceUIString from '../strings/replace';
+import FormTemplate from './form.eft';
+import TextArea from './textarea.eft';
+import UIStrings from '../../strings/content';
+import config from '../../config';
+import replaceUIString from '../../strings/replace';
 
 const initProps = {
     $data: {
