@@ -78,11 +78,15 @@ pmnt-formbody, pmnt-edit {
             color: #fff;
             font-size: 1em;
             font-weight: bold;
+            transition: opacity 0.3s;
             &.submit {
                 background-color: #8bc34a;
             }
             &.cancel {
                 background-color: #ef5350;
+            }
+            &:disabled {
+                opacity: 0.4;
             }
         }
     }

@@ -23,6 +23,7 @@
                     -contentWrapper
                     >button.submit
                         #type = submit
+                        %disabled = {{disableSubmit}}
                         .{{submitUI}}
                     >button.cancel.{{cancelHidden = hidden}}
                         .{{cancelUI}}

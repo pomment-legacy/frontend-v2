@@ -7,3 +7,4 @@
         #rows = 4
         #id = area
         #autocomplete = new-password
+        %value = {{content}}

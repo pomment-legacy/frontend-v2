@@ -3,6 +3,7 @@ import TextArea from './textarea.eft';
 import UIStrings from '../../strings/content';
 import config from '../../config';
 import replaceUIString from '../../strings/replace';
+import strSizeof from './str-sizeof';
 
 const initProps = {
     $data: {
@@ -20,6 +21,7 @@ const initProps = {
 class Form extends FormTemplate {
     constructor(props) {
         super(Object.assign({}, initProps, props));
+        this.tooMany = false;
         this.contentWrapper = new TextArea({
             $data: {
                 contentUI: replaceUIString(UIStrings.FORM_CONTENT_REQUIRED, {
@@ -33,9 +35,11 @@ class Form extends FormTemplate {
                 focusEvent({ state }) {
                     state.$data.active = 'active';
                 },
-                inputEvent: (function inputEvent() {
+                inputEvent: (function inputEvent({ state }) {
                     this.area.style.height = '0px';
                     this.area.style.height = `${Math.max(this.minHeight, this.area.scrollHeight)}px`;
+                    this.tooMany = strSizeof(state.$data.content) > config.maxChar;
+                    this.$data.disableSubmit = this.tooMany;
                 }).bind(this),
             },
         });
