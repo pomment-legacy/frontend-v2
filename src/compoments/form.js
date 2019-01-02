@@ -2,6 +2,7 @@ import FormTemplate from './form/form.eft';
 import TextArea from './form/textarea.eft';
 import UIStrings from '../strings/content';
 import config from '../config';
+import replaceUIString from '../strings/replace';
 
 const initProps = {
     $data: {
@@ -21,7 +22,9 @@ class Form extends FormTemplate {
         super(Object.assign({}, initProps, props));
         this.contentWrapper = new TextArea({
             $data: {
-                contentUI: UIStrings.FORM_CONTENT_REQUIRED,
+                contentUI: replaceUIString(UIStrings.FORM_CONTENT_REQUIRED, {
+                    maxChar: config.maxChar,
+                }),
             },
             $methods: {
                 blurEvent({ state }) {

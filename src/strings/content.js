@@ -5,7 +5,7 @@ export default {
     FORM_NAME: 'Nickname',
     FORM_EMAIL_REQUIRED: 'Email*',
     FORM_WEBSITE: 'Website',
-    FORM_CONTENT_REQUIRED: 'Content*',
+    FORM_CONTENT_REQUIRED: 'Content* (Up to {{maxChar}} characters)',
     FORM_SUBMIT: 'Submit',
     FORM_CANCEL: 'Cancel',
 };
