@@ -9,6 +9,7 @@ module.exports = {
         }],
         "prefer-destructuring": "off",
         "no-console": "off",
+        "no-param-reassign": "off"
     },
     "env": {
         "browser": true

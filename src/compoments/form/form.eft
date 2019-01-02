@@ -7,8 +7,7 @@
         >pmnt-content
             >pmnt-formbody
                 >form
-                    >div
-                        #class = info
+                    >div.info
                         >input
                             #type = text
                             #placeholder = {{nameUI}}
@@ -21,19 +20,9 @@
                             #type = url
                             #placeholder = {{websiteUI}}
                             #autocomplete = url
-                    >div
-                        #class = content-wrapper
-                        >textarea
-                            #placeholder = {{contentUI}}
-                            #rows = 4
-                            #id = area
-                            #autocomplete = new-password
-                            #autocorrent = off
-                            #style = height: {{realTimeHeight = 0}}px
-                    >button
-                        #class = submit
+                    -contentWrapper
+                    >button.submit
                         #type = submit
                         .{{submitUI}}
-                    >button.{{cancelHidden = hidden}}
-                        #class = cancel
+                    >button.cancel.{{cancelHidden = hidden}}
                         .{{cancelUI}}

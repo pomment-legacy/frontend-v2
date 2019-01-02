@@ -1,5 +1,7 @@
-import FormTemplate from './form.eft';
+import FormTemplate from './form/form.eft';
+import TextArea from './form/textarea.eft';
 import UIStrings from '../strings/content';
+import config from '../config';
 
 const initProps = {
     $data: {
@@ -7,7 +9,6 @@ const initProps = {
         nameUI: UIStrings.FORM_NAME,
         emailUI: UIStrings.FORM_EMAIL_REQUIRED,
         websiteUI: UIStrings.FORM_WEBSITE,
-        contentUI: UIStrings.FORM_CONTENT_REQUIRED,
         submitUI: UIStrings.FORM_SUBMIT,
         cancelUI: UIStrings.FORM_CANCEL,
     },
@@ -18,6 +19,25 @@ const initProps = {
 class Form extends FormTemplate {
     constructor(props) {
         super(Object.assign({}, initProps, props));
+        this.contentWrapper = new TextArea({
+            $data: {
+                contentUI: UIStrings.FORM_CONTENT_REQUIRED,
+            },
+            $methods: {
+                blurEvent({ state }) {
+                    state.$data.active = '';
+                },
+                focusEvent({ state }) {
+                    state.$data.active = 'active';
+                },
+                inputEvent: (function inputEvent() {
+                    this.area.style.height = '0px';
+                    this.area.style.height = `${Math.max(this.minHeight, this.area.scrollHeight)}px`;
+                }).bind(this),
+            },
+        });
+        this.area = this.contentWrapper.$ctx.nodeInfo.element.childNodes[0];
+        this.minHeight = 0;
     }
 }
 

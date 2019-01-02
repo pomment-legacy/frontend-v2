@@ -1,0 +1,9 @@
+>div.content-wrapper.{{active}}
+    >textarea
+        @blur = blurEvent
+        @focus = focusEvent
+        @input = inputEvent
+        #placeholder = {{contentUI}}
+        #rows = 4
+        #id = area
+        #autocomplete = new-password

@@ -37,6 +37,11 @@ class PommentWidget extends Main {
             this._loaded = true;
             this._form = new Form();
             this._headerMessage = null;
+            // 可变高度文本框初始化
+            this._form.area.value = '\n\n\n\n';
+            this._form.minHeight = this._form.area.getBoundingClientRect().height;
+            this._form.area.style.height = `${this._form.minHeight}px`;
+            this._form.area.value = '';
         } catch (e) {
             this._headerMessage = new Bar({
                 $data: {
