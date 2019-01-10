@@ -5,12 +5,12 @@ import Bar from './compoments/bar/main';
 import Form from './compoments/form/main';
 import UIStrings from './strings/content';
 import Comment from './compoments/comment/comment.eft';
+import getAvatarSize from './utils/avatar-size';
 import makeTree from './tree';
 
 class PommentWidget extends Main {
     constructor(props) {
         super(props);
-        this.avatarSize = props.avatarSize || 200;
         this.avatarPrefix = props.avatarPrefix || 'https://secure.gravatar.com/avatar/';
         this._loaded = false;
         this._threadData = {};
@@ -64,11 +64,12 @@ class PommentWidget extends Main {
     }
 
     _printList() {
+        const avatarSize = getAvatarSize.bind(this)();
         this._threadData.forEach((e) => {
             this._comments.push(new Comment({
                 $data: {
                     name: e.name,
-                    emailHashed: `${this.avatarPrefix + e.emailHashed}?s=${this.avatarSize}`,
+                    emailHashed: `${this.avatarPrefix + e.emailHashed}?s=${avatarSize}`,
                     content: e.content,
                 },
             }));
