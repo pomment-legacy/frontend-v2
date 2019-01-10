@@ -1,26 +1,25 @@
+import md5 from 'crypto-js/md5';
 import FormTemplate from './form.eft';
 import TextArea from './textarea.eft';
 import UIStrings from '../../strings/content';
 import config from '../../config';
 import replaceUIString from '../../strings/replace';
 import strSizeof from './str-sizeof';
-
-const initProps = {
-    $data: {
-        avatar: null,
-        nameUI: UIStrings.FORM_NAME,
-        emailUI: UIStrings.FORM_EMAIL_REQUIRED,
-        websiteUI: UIStrings.FORM_WEBSITE,
-        submitUI: UIStrings.FORM_SUBMIT,
-        cancelUI: UIStrings.FORM_CANCEL,
-    },
-    $methods: {
-    },
-};
+import getAvatarSize from '../../utils/avatar-size';
 
 class Form extends FormTemplate {
     constructor(props) {
-        super(Object.assign({}, initProps, props));
+        super(props);
+        const root = this.root;
+        this.$data.nameUI = UIStrings.FORM_NAME;
+        this.$data.emailUI = UIStrings.FORM_EMAIL_REQUIRED;
+        this.$data.websiteUI = UIStrings.FORM_WEBSITE;
+        this.$data.submitUI = UIStrings.FORM_SUBMIT;
+        this.$data.cancelUI = UIStrings.FORM_CANCEL;
+        this.$data.avatar = `${root.avatarPrefix}${md5(this.$data.email)}?s=${getAvatarSize.bind(root)()}`;
+        this.$methods.updateAvatarEvent = () => {
+            this.$data.avatar = `${root.avatarPrefix}${md5(this.$data.email)}?s=${getAvatarSize.bind(root)()}`;
+        };
         this.tooMany = false;
         this.contentWrapper = new TextArea({
             $data: {

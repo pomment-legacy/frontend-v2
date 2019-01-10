@@ -39,7 +39,9 @@ class PommentWidget extends Main {
             });
             const rawThreadData = await this._sdk.listComments();
             this._loaded = true;
-            this._form = new Form();
+            this._form = new Form({
+                root: this,
+            });
             this._headerMessage = null;
             // 可变高度文本框初始化
             this._form.area.value = '\n\n\n\n';

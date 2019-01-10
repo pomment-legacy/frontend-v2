@@ -35,6 +35,7 @@
     "lint": "eslint --ext .js src"
   },
   "dependencies": {
+    "crypto-js": "^3.1.9-1",
     "ef-core": "^0.8.1",
     "pomment-sdk": "^2.0.3"
   }
