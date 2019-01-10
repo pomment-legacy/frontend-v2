@@ -41,7 +41,7 @@ pmnt-content {
 pmnt-entry {
     margin: 0 .5em;
     .upper {
-        line-height: 2.2em;
+        padding: 0.5em 0;
     }
     span.name {
         font-weight: bold;
@@ -77,10 +77,10 @@ pmnt-entry {
     }
     ul {
         margin: 0;
-        margin-top: .6em;
+        margin-top: .5em;
         padding: 0;
-        padding-top: .6em;
-        padding-bottom: .6em;
+        padding-top: .5em;
+        padding-bottom: .5em;
         border: 0;
         border-top: .0625rem #ccc dashed;
         li {
