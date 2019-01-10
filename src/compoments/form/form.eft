@@ -12,14 +12,17 @@
                             #type = text
                             #placeholder = {{nameUI}}
                             #autocomplete = nickname
+                            %value = {{name}}
                         >input
                             #type = email
                             #placeholder = {{emailUI}}
                             #autocomplete = email
+                            %value = {{email}}
                         >input
                             #type = url
                             #placeholder = {{websiteUI}}
                             #autocomplete = url
+                            %value = {{url}}
                     -contentWrapper
                     >button.submit
                         #type = submit
