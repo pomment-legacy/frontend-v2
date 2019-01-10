@@ -1,0 +1,26 @@
+>pmnt-comment
+    >pmnt-avatar-item
+        >pmnt-avatar
+            #aria-hidden = true
+            #style = background-image: url({{emailHashed}})
+        >pmnt-content
+            >pmnt-entry
+                >div.upper
+                    >span.name
+                        .{{name}}
+                    >time
+                        #datetime = {{datetime}}
+                        .{{date}}
+                >div
+                    #class = text
+                    .{{content}}
+                >ul
+                    >li
+                        >a
+                            .回复
+                    >li
+                        >a
+                            .编辑
+                    >li
+                        >a
+                            .删除

@@ -4,10 +4,14 @@ import Main from './compoments/index.eft';
 import Bar from './compoments/bar/main';
 import Form from './compoments/form/main';
 import UIStrings from './strings/content';
+import Comment from './compoments/comment/comment.eft';
+import makeTree from './tree';
 
 class PommentWidget extends Main {
     constructor(props) {
         super(props);
+        this.avatarSize = props.avatarSize || 200;
+        this.avatarPrefix = props.avatarPrefix || 'https://secure.gravatar.com/avatar/';
         this._loaded = false;
         this._threadData = {};
         this._sdk = new Pomment({
@@ -33,7 +37,7 @@ class PommentWidget extends Main {
                     message: UIStrings.POMMENT_LOADING,
                 },
             });
-            this._threadData = await this._sdk.listComments();
+            const rawThreadData = await this._sdk.listComments();
             this._loaded = true;
             this._form = new Form();
             this._headerMessage = null;
@@ -42,6 +46,8 @@ class PommentWidget extends Main {
             this._form.minHeight = this._form.area.getBoundingClientRect().height;
             this._form.area.style.height = `${this._form.minHeight}px`;
             this._form.area.value = '';
+            this._threadData = makeTree(rawThreadData.content);
+            this._printList();
         } catch (e) {
             this._headerMessage = new Bar({
                 $data: {
@@ -55,6 +61,18 @@ class PommentWidget extends Main {
             });
             throw e;
         }
+    }
+
+    _printList() {
+        this._threadData.forEach((e) => {
+            this._comments.push(new Comment({
+                $data: {
+                    name: e.name,
+                    emailHashed: `${this.avatarPrefix + e.emailHashed}?s=${this.avatarSize}`,
+                    content: e.content,
+                },
+            }));
+        });
     }
 
     get loaded() {

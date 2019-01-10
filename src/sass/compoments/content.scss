@@ -15,7 +15,7 @@ pmnt-comment:nth-child(even) {
 }
 
 pmnt-avatar-item {
-    min-height: 8em;
+    min-height: 6em;
     position: relative;
 }
 
@@ -41,7 +41,7 @@ pmnt-content {
 pmnt-entry {
     margin: 0 .5em;
     .upper {
-        line-height: 2em;
+        line-height: 2.2em;
     }
     span.name {
         font-weight: bold;
