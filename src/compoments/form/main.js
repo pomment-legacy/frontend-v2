@@ -39,7 +39,7 @@ class Form extends FormTemplate {
                     this.area.style.height = '0px';
                     this.area.style.height = `${Math.max(this.minHeight, this.area.scrollHeight)}px`;
                     this.tooMany = strSizeof(state.$data.content) > config.maxChar;
-                    this.$data.disableSubmit = this.tooMany;
+                    this.$data.disableSubmit = this.tooMany ? true : null;
                 }).bind(this),
             },
         });
