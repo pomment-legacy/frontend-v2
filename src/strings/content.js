@@ -8,4 +8,11 @@ export default {
     FORM_CONTENT_REQUIRED: 'Content* (Up to {{maxChar}} characters)',
     FORM_SUBMIT: 'Submit',
     FORM_CANCEL: 'Cancel',
+    TIME_NOW: 'Just now',
+    TIME_SECOND: '{{ago}} seconds ago',
+    TIME_MINUTE: '{{ago}} minutes ago',
+    TIME_HOUR: '{{ago}} hours ago',
+    TIME_DAY: '{{ago}} days ago',
+    TIME_WEEK: '{{ago}} weeks ago',
+    TIME_MONTH: '{{ago}} months ago',
 };

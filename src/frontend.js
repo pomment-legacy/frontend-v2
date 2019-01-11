@@ -7,6 +7,7 @@ import UIStrings from './strings/content';
 import Comment from './compoments/comment/comment.eft';
 import getAvatarSize from './utils/avatar-size';
 import makeTree from './tree';
+import timeSince from './utils/time';
 
 class PommentWidget extends Main {
     constructor(props) {
@@ -74,6 +75,8 @@ class PommentWidget extends Main {
                     name: e.name,
                     emailHashed: `${this.avatarPrefix + e.emailHashed}?s=${avatarSize}`,
                     content: e.content,
+                    datetime: e.createdAt.toISOString(),
+                    date: timeSince(e.createdAt),
                 },
             });
             this._comments.push(singleItem);
@@ -84,6 +87,8 @@ class PommentWidget extends Main {
                             name: f.name,
                             emailHashed: `${this.avatarPrefix + f.emailHashed}?s=${avatarSize}`,
                             content: f.content,
+                            datetime: f.createdAt.toISOString(),
+                            date: timeSince(f.createdAt),
                         },
                     });
                     singleItem.subComments.push(subSingleItem);
