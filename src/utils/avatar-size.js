@@ -1,7 +1,7 @@
 import config from '../config';
 
 function getAvatarSize() {
-    return parseInt(getComputedStyle(this.$ctx.nodeInfo.element).fontSize, 10)
+    return parseFloat(getComputedStyle(this.$ctx.nodeInfo.element).fontSize)
         * config.avatarSizeEM * window.devicePixelRatio;
 }
 
