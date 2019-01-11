@@ -7,19 +7,21 @@ import replaceUIString from '../../strings/replace';
 import strSizeof from './str-sizeof';
 import getAvatarSize from '../../utils/avatar-size';
 
+function updateAvatar() {
+    const root = this.root;
+    this.$data.avatar = `${root.avatarPrefix}${md5(this.$data.email)}?s=${getAvatarSize.bind(root)()}`;
+}
+
 class Form extends FormTemplate {
     constructor(props) {
         super(props);
-        const root = this.root;
+        updateAvatar.bind(this)();
         this.$data.nameUI = UIStrings.FORM_NAME;
         this.$data.emailUI = UIStrings.FORM_EMAIL_REQUIRED;
         this.$data.websiteUI = UIStrings.FORM_WEBSITE;
         this.$data.submitUI = UIStrings.FORM_SUBMIT;
         this.$data.cancelUI = UIStrings.FORM_CANCEL;
-        this.$data.avatar = `${root.avatarPrefix}${md5(this.$data.email)}?s=${getAvatarSize.bind(root)()}`;
-        this.$methods.updateAvatarEvent = () => {
-            this.$data.avatar = `${root.avatarPrefix}${md5(this.$data.email)}?s=${getAvatarSize.bind(root)()}`;
-        };
+        this.$methods.updateAvatarEvent = updateAvatar.bind(this);
         this.tooMany = false;
         this.contentWrapper = new TextArea({
             $data: {

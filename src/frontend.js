@@ -66,15 +66,29 @@ class PommentWidget extends Main {
     }
 
     _printList() {
+        this._comments = [];
         const avatarSize = getAvatarSize.bind(this)();
         this._threadData.forEach((e) => {
-            this._comments.push(new Comment({
+            const singleItem = new Comment({
                 $data: {
                     name: e.name,
                     emailHashed: `${this.avatarPrefix + e.emailHashed}?s=${avatarSize}`,
                     content: e.content,
                 },
-            }));
+            });
+            this._comments.push(singleItem);
+            if (e.sub) {
+                e.sub.forEach((f) => {
+                    const subSingleItem = new Comment({
+                        $data: {
+                            name: f.name,
+                            emailHashed: `${this.avatarPrefix + f.emailHashed}?s=${avatarSize}`,
+                            content: f.content,
+                        },
+                    });
+                    singleItem.subComments.push(subSingleItem);
+                });
+            }
         });
     }
 

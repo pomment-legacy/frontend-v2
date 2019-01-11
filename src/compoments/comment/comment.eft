@@ -18,9 +18,5 @@
                     >li
                         >a
                             .回复
-                    * >li
-                        * >a
-                            * .编辑
-                    * >li
-                        * >a
-                            * .删除
+    >pmnt-comment-nest
+        +subComments

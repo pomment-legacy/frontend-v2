@@ -4,9 +4,9 @@ function findWithAttr(arr, attr, value) {
         if (array[i][attr] === value) {
             return i;
         }
-        if (array[i].slave) {
-            for (let j = 0; j < array[i].slave.length; j += 1) {
-                if (array[i].slave[j][attr] === value) {
+        if (array[i].sub) {
+            for (let j = 0; j < array[i].sub.length; j += 1) {
+                if (array[i].sub[j][attr] === value) {
                     return i;
                 }
             }
@@ -25,8 +25,8 @@ function makeTree(dataArr) {
         if (data[i].parent && data[i].parent >= 0) {
             const targetPos = findWithAttr(data, 'id', data[i].parent);
             if (data[targetPos]) {
-                if (!data[targetPos].slave) data[targetPos].slave = [];
-                data[targetPos].slave.push(data[i]);
+                if (!data[targetPos].sub) data[targetPos].sub = [];
+                data[targetPos].sub.push(data[i]);
             }
             data.splice(i, 1);
         } else {
