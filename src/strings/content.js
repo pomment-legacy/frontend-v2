@@ -15,6 +15,7 @@ export default {
     TIME_DAY: '{{ago}} days ago',
     TIME_WEEK: '{{ago}} weeks ago',
     TIME_MONTH: '{{ago}} months ago',
+    ENTRY_REPLY: 'Reply',
     ENTRY_REPLY_OF: '(Replied to {{parentName}})',
     ENTRY_PRPLY_OF_PADDING: 0.5,
 };

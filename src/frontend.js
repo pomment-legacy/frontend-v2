@@ -82,6 +82,7 @@ class PommentWidget extends Main {
                     content: e.content,
                     datetime: e.createdAt.toISOString(),
                     date: timeSince(e.createdAt),
+                    reply: UIStrings.ENTRY_REPLY,
                 },
             });
             this._threadMap.set(e.id, e);
@@ -100,6 +101,7 @@ class PommentWidget extends Main {
                             datetime: f.createdAt.toISOString(),
                             date: timeSince(f.createdAt),
                             parent: f.parent,
+                            reply: UIStrings.ENTRY_REPLY,
                             replyOf: replaceUIString(UIStrings.ENTRY_REPLY_OF, {
                                 parentName: this._threadMap.get(f.parent).name,
                             }),

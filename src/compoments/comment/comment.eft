@@ -21,6 +21,6 @@
                 >ul
                     >li
                         >a
-                            .回复
+                            .{{reply}}
     >pmnt-comment-nest
         +subComments
