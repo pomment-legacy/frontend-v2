@@ -8,6 +8,8 @@
                 >div.upper
                     >span.name
                         .{{name}}
+                    >a.reply-of
+                        .（回复给 tcdw）
                     >time
                         #datetime = {{datetime}}
                         .{{date}}
