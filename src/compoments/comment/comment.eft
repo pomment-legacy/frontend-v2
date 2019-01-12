@@ -9,7 +9,9 @@
                     >span.name
                         .{{name}}
                     >a.reply-of
-                        .（回复给 tcdw）
+                        #style = padding-left: {{replyOfPaddingLeft = 0}}em
+                        @click = jump:{{parent}}
+                        .{{replyOf}}
                     >time
                         #datetime = {{datetime}}
                         .{{date}}

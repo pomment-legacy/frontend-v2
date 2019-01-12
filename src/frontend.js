@@ -8,11 +8,13 @@ import Comment from './compoments/comment/comment.eft';
 import getAvatarSize from './utils/avatar-size';
 import makeTree from './tree';
 import timeSince from './utils/time';
+import replaceUIString from './strings/replace';
 
 class PommentWidget extends Main {
     constructor(props) {
         super(props);
         this.avatarPrefix = props.avatarPrefix || 'https://secure.gravatar.com/avatar/';
+        this.fixedHeight = props.fixedHeight || 0;
         this._loaded = false;
         this._threadData = {};
         this._threadElementMap = new Map();
@@ -74,6 +76,7 @@ class PommentWidget extends Main {
         this._threadData.forEach((e) => {
             const singleItem = new Comment({
                 $data: {
+                    id: e.id,
                     name: e.name,
                     emailHashed: `${this.avatarPrefix + e.emailHashed}?s=${avatarSize}`,
                     content: e.content,
@@ -87,12 +90,20 @@ class PommentWidget extends Main {
             if (e.sub) {
                 e.sub.forEach((f) => {
                     const subSingleItem = new Comment({
+                        $methods: {
+                            jump: this._jumpTo.bind(this),
+                        },
                         $data: {
                             name: f.name,
                             emailHashed: `${this.avatarPrefix + f.emailHashed}?s=${avatarSize}`,
                             content: f.content,
                             datetime: f.createdAt.toISOString(),
                             date: timeSince(f.createdAt),
+                            parent: f.parent,
+                            replyOf: replaceUIString(UIStrings.ENTRY_REPLY_OF, {
+                                parentName: this._threadMap.get(f.parent).name,
+                            }),
+                            replyOfPaddingLeft: UIStrings.ENTRY_PRPLY_OF_PADDING,
                         },
                     });
                     this._threadMap.set(f.id, f);
@@ -100,6 +111,15 @@ class PommentWidget extends Main {
                     singleItem.subComments.push(subSingleItem);
                 });
             }
+        });
+    }
+
+    _jumpTo(props) {
+        const id = props.value;
+        const element = this._threadElementMap.get(id).$ctx.nodeInfo.element;
+        window.scrollTo({
+            top: element.offsetTop - this.fixedHeight,
+            behavior: 'smooth',
         });
     }
 
