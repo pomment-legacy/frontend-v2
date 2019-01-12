@@ -15,6 +15,8 @@ class PommentWidget extends Main {
         this.avatarPrefix = props.avatarPrefix || 'https://secure.gravatar.com/avatar/';
         this._loaded = false;
         this._threadData = {};
+        this._threadElementMap = new Map();
+        this._threadMap = new Map();
         this._sdk = new Pomment({
             server: props.server,
             defaultURL: props.url,
@@ -79,6 +81,8 @@ class PommentWidget extends Main {
                     date: timeSince(e.createdAt),
                 },
             });
+            this._threadMap.set(e.id, e);
+            this._threadElementMap.set(e.id, singleItem);
             this._comments.push(singleItem);
             if (e.sub) {
                 e.sub.forEach((f) => {
@@ -91,6 +95,8 @@ class PommentWidget extends Main {
                             date: timeSince(f.createdAt),
                         },
                     });
+                    this._threadMap.set(f.id, f);
+                    this._threadElementMap.set(f.id, subSingleItem);
                     singleItem.subComments.push(subSingleItem);
                 });
             }
