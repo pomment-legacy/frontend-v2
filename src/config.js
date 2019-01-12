@@ -1,4 +1,4 @@
 export default {
-    avatarSizeEM: 5,
+    avatarSize: 300,
     maxChar: 1000,
 };

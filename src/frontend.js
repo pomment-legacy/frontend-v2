@@ -5,7 +5,7 @@ import Bar from './compoments/bar/main';
 import Form from './compoments/form/main';
 import UIStrings from './strings/content';
 import Comment from './compoments/comment/comment.eft';
-import getAvatarSize from './utils/avatar-size';
+import Config from './config';
 import makeTree from './tree';
 import timeSince from './utils/time';
 import replaceUIString from './strings/replace';
@@ -72,7 +72,7 @@ class PommentWidget extends Main {
 
     _printList() {
         this._comments = [];
-        const avatarSize = getAvatarSize.bind(this)();
+        const avatarSize = Config.avatarSize;
         this._threadData.forEach((e) => {
             const singleItem = new Comment({
                 $data: {

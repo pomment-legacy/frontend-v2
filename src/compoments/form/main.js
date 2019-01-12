@@ -2,14 +2,13 @@ import md5 from 'crypto-js/md5';
 import FormTemplate from './form.eft';
 import TextArea from './textarea.eft';
 import UIStrings from '../../strings/content';
-import config from '../../config';
+import Config from '../../config';
 import replaceUIString from '../../strings/replace';
 import strSizeof from './str-sizeof';
-import getAvatarSize from '../../utils/avatar-size';
 
 function updateAvatar() {
     const root = this.root;
-    this.$data.avatar = `${root.avatarPrefix}${md5(this.$data.email)}?s=${getAvatarSize.bind(root)()}`;
+    this.$data.avatar = `${root.avatarPrefix}${md5(this.$data.email)}?s=${Config.avatarSize}`;
 }
 
 class Form extends FormTemplate {
@@ -26,7 +25,7 @@ class Form extends FormTemplate {
         this.contentWrapper = new TextArea({
             $data: {
                 contentUI: replaceUIString(UIStrings.FORM_CONTENT_REQUIRED, {
-                    maxChar: config.maxChar,
+                    maxChar: Config.maxChar,
                 }),
             },
             $methods: {
@@ -39,7 +38,7 @@ class Form extends FormTemplate {
                 inputEvent: (function inputEvent({ state }) {
                     this.area.style.height = '0px';
                     this.area.style.height = `${Math.max(this.minHeight, this.area.scrollHeight)}px`;
-                    this.tooMany = strSizeof(state.$data.content) > config.maxChar;
+                    this.tooMany = strSizeof(state.$data.content) > Config.maxChar;
                     this.$data.disableSubmit = this.tooMany ? true : null;
                 }).bind(this),
             },
