@@ -21,6 +21,8 @@
                 >ul
                     >li
                         >a
+                            @click = reply:{{id}}
                             .{{reply}}
+    -form
     >pmnt-comment-nest
         +subComments

@@ -1,4 +1,5 @@
 >pmnt-main
     -_headerMessage
-    -_form
-    +_comments
+    -_defaultForm
+    >pmnt-comment-tree
+        +_comments
