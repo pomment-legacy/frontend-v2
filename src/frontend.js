@@ -47,6 +47,9 @@ class PommentWidget extends Main {
             this._loaded = true;
             this._form = new Form({
                 root: this,
+                $methods: {
+                    cancel: this._cancelReplyOther.bind(this),
+                },
             });
             this._defaultForm = this._form;
             this._headerMessage = null;
@@ -135,21 +138,28 @@ class PommentWidget extends Main {
 
     _moveFormTo(props) {
         this._form.$umount();
-        if (props.id < 0) {
+        const id = props.value;
+        this._currentTarget = id;
+        if (id < 0) {
             if (process.env.NODE_ENV !== 'production') {
                 console.info('[Pomment]', 'Form will be moved to default position');
             }
-            this._currentTarget = -1;
             this._defaultForm = this._form;
+            this._form.$data.cancelHidden = 'hidden';
             return;
         }
-        const id = props.value;
         if (process.env.NODE_ENV !== 'production') {
             console.info('[Pomment]', `Form will be moved to the bottom of ${id}`);
         }
-        this._currentTarget = id;
         const element = this._threadElementMap.get(id);
         element.form = this._form;
+        this._form.$data.cancelHidden = '';
+    }
+
+    _cancelReplyOther() {
+        this._moveFormTo({
+            value: -1,
+        });
     }
 
     get loaded() {

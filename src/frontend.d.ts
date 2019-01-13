@@ -2,6 +2,8 @@ interface PWProps {
     server: string;
     url?: string;
     title?: string;
+    avatarPrefix?: string;
+    fixedHeight?: number;
 }
 
 class PommentWidget {

@@ -30,4 +30,5 @@
                         %disabled = {{disableSubmit}}
                         .{{submitUI}}
                     >button.cancel.{{cancelHidden = hidden}}
+                        @click.prevent = cancel
                         .{{cancelUI}}
