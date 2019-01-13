@@ -24,6 +24,7 @@ class PommentWidget extends Main {
             defaultURL: props.url,
             defaultTitle: props.title,
         });
+        this._currentTarget = -1;
         Object.keys(this).forEach((e) => {
             Object.defineProperty(this, e, {
                 enumerable: false,
@@ -47,6 +48,7 @@ class PommentWidget extends Main {
             this._form = new Form({
                 root: this,
             });
+            this._defaultForm = this._form;
             this._headerMessage = null;
             // 可变高度文本框初始化
             this._form.area.value = '\n\n\n\n';
@@ -75,6 +77,10 @@ class PommentWidget extends Main {
         const avatarSize = Config.avatarSize;
         this._threadData.forEach((e) => {
             const singleItem = new Comment({
+                $methods: {
+                    jump: this._jumpTo.bind(this),
+                    reply: this._moveFormTo.bind(this),
+                },
                 $data: {
                     id: e.id,
                     name: e.name,
@@ -93,8 +99,10 @@ class PommentWidget extends Main {
                     const subSingleItem = new Comment({
                         $methods: {
                             jump: this._jumpTo.bind(this),
+                            reply: this._moveFormTo.bind(this),
                         },
                         $data: {
+                            id: f.id,
                             name: f.name,
                             emailHashed: `${this.avatarPrefix + f.emailHashed}?s=${avatarSize}`,
                             content: f.content,
@@ -123,6 +131,25 @@ class PommentWidget extends Main {
             top: element.offsetTop - this.fixedHeight,
             behavior: 'smooth',
         });
+    }
+
+    _moveFormTo(props) {
+        this._form.$umount();
+        if (props.id < 0) {
+            if (process.env.NODE_ENV !== 'production') {
+                console.info('[Pomment]', 'Form will be moved to default position');
+            }
+            this._currentTarget = -1;
+            this._defaultForm = this._form;
+            return;
+        }
+        const id = props.value;
+        if (process.env.NODE_ENV !== 'production') {
+            console.info('[Pomment]', `Form will be moved to the bottom of ${id}`);
+        }
+        this._currentTarget = id;
+        const element = this._threadElementMap.get(id);
+        element.form = this._form;
     }
 
     get loaded() {
