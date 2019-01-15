@@ -8,6 +8,13 @@ pmnt-message {
         line-height: 2em;
         width: 100%;
         box-sizing: border-box;
+        a {
+            cursor: pointer;
+            text-decoration: none;
+            &:hover {
+                text-decoration: underline;
+            }
+        }
     }
     .close-btn {
         display: none;
