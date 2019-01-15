@@ -1,7 +1,7 @@
 import './sass/frontend.scss';
 import Pomment from 'pomment-sdk';
 import Main from './compoments/index.eft';
-import Bar from './compoments/bar/main';
+import Bar from './compoments/bar/bar.eft';
 import Form from './compoments/form/main';
 import UIStrings from './strings/content';
 import Comment from './compoments/comment/comment.eft';
@@ -142,6 +142,12 @@ class PommentWidget extends Main {
         });
     }
 
+    _jumpToCurrent() {
+        if (this._currentTarget >= 0) {
+            this._jumpTo({ value: this._currentTarget });
+        }
+    }
+
     _moveFormTo(props) {
         this._form.$umount();
         const id = props.value;
@@ -160,9 +166,27 @@ class PommentWidget extends Main {
         const element = this._threadElementMap.get(id);
         element.form = this._form;
         this._form.$data.cancelHidden = '';
+
+        // 在上方展示出『正在回复某人』的提示栏
+        this._headerMessage = null;
+        this._headerMessage = new Bar({
+            $data: {
+                closeable: 'closeable',
+                style: 'info',
+                link: replaceUIString(UIStrings.POMMENT_REPLYING, {
+                    name: this._threadMap.get(id).name,
+                }),
+            },
+            $methods: {
+                link: this._jumpToCurrent.bind(this),
+                close: this._cancelReplyOther.bind(this),
+            },
+        });
     }
 
     _cancelReplyOther() {
+        this._currentTarget = -1;
+        this._headerMessage = null;
         this._moveFormTo({
             value: -1,
         });

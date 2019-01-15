@@ -2,6 +2,7 @@ export default {
     POMMENT_LOADING: 'Initializing Pomment ...',
     POMMENT_LOADING_FAILED: 'Failed to initialize Pomment. ',
     POMMENT_LOADING_RETRY: 'Retry?',
+    POMMENT_REPLYING: 'You are replying {{name}}\'s comment.',
     FORM_NAME: 'Nickname',
     FORM_EMAIL_REQUIRED: 'Email*',
     FORM_WEBSITE: 'Website',
