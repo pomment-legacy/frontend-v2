@@ -91,6 +91,9 @@ class PommentWidget extends Main {
                     content: e.content,
                     datetime: e.createdAt.toISOString(),
                     date: timeSince(e.createdAt),
+                    admin: UIStrings.ENTRY_ADMIN,
+                    adminHidden: e.byAdmin ? '' : 'hidden',
+                    adminPaddingLeft: UIStrings.ENTRY_ADMIN_PADDING,
                     reply: UIStrings.ENTRY_REPLY,
                 },
             });
@@ -111,6 +114,9 @@ class PommentWidget extends Main {
                             content: f.content,
                             datetime: f.createdAt.toISOString(),
                             date: timeSince(f.createdAt),
+                            admin: UIStrings.ENTRY_ADMIN,
+                            adminHidden: f.byAdmin ? '' : 'hidden',
+                            adminPaddingLeft: UIStrings.ENTRY_ADMIN_PADDING,
                             parent: f.parent,
                             reply: UIStrings.ENTRY_REPLY,
                             replyOf: replaceUIString(UIStrings.ENTRY_REPLY_OF, {
