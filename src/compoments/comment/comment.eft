@@ -6,10 +6,11 @@
         >pmnt-content
             >pmnt-entry
                 >div.upper
-                    >span.name
+                    >a.name
+                        #href = {{website}}
                         .{{name}}
-                    >span.id
-                        . ({{id}})
+                        >span.id
+                            . ({{id}})
                     >a.reply-of
                         #style = padding-left: {{replyOfPaddingLeft = 0}}em
                         @click = jump:{{parent}}

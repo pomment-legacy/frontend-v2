@@ -106,6 +106,7 @@ class PommentWidget extends Main {
                     id: e.id,
                     name,
                     avatar,
+                    website: e.byAdmin ? '' : e.website,
                     content: e.content,
                     datetime: e.createdAt.toISOString(),
                     date: timeSince(e.createdAt),
@@ -133,6 +134,7 @@ class PommentWidget extends Main {
                             id: f.id,
                             name: nameSub,
                             avatar: avatarSub,
+                            website: f.byAdmin ? '' : f.website,
                             content: f.content,
                             datetime: f.createdAt.toISOString(),
                             date: timeSince(f.createdAt),
@@ -215,11 +217,11 @@ class PommentWidget extends Main {
     }
 
     _showPostID() {
-        this._postIDHiddenStyle.textContent = '';
+        this._postIDHiddenStyle.textContent = 'pmnt-entry > div.upper > a.name > span.id { display: inline }';
     }
 
     _hidePostID() {
-        this._postIDHiddenStyle.textContent = 'pmnt-entry > div.upper > span.id { display: none }';
+        this._postIDHiddenStyle.textContent = '';
     }
 
     get loaded() {

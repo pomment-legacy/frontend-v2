@@ -42,8 +42,22 @@ pmnt-entry {
     .upper {
         padding: 0.5em 0;
     }
-    span.name, span.id {
+    a.name {
         font-weight: bold;
+        text-decoration: none;
+        &:hover, &:active {
+            text-decoration: none;
+        }
+        &[href] {
+            color: #00f;
+            &:hover {
+                color: lighten($color: #00f, $amount: 22%);
+                text-decoration: underline;
+            }
+        }
+        span.id {
+            display: none;
+        }
     }
     span.admin {
         background-color: #9a9a9a;
