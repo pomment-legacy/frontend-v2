@@ -89,69 +89,54 @@ class PommentWidget extends Main {
         }
     }
 
+    _printEntry(e, sub) {
+        const avatarSize = Config.avatarSize;
+        const oName = e.name;
+        const oAvatar = `${this.avatarPrefix + e.emailHashed}?s=${avatarSize}`;
+        const name = e.byAdmin ? (this.adminName || oName) : oName;
+        const avatar = e.byAdmin ? (this.adminAvatar || oAvatar) : oAvatar;
+        const singleItem = new Comment({
+            $methods: {
+                jump: this._jumpTo.bind(this),
+                reply: this._moveFormTo.bind(this),
+            },
+            $data: {
+                id: e.id,
+                name,
+                avatar,
+                website: e.byAdmin ? '' : e.website,
+                content: e.content,
+                datetime: e.createdAt.toISOString(),
+                date: timeSince(e.createdAt),
+                admin: UIStrings.ENTRY_ADMIN,
+                adminHidden: e.byAdmin ? '' : 'hidden',
+                adminPaddingLeft: UIStrings.ENTRY_ADMIN_PADDING,
+                parent: e.parent,
+                reply: UIStrings.ENTRY_REPLY,
+            },
+        });
+        if (sub) {
+            const parent = this._threadMap.get(e.parent);
+            const parentName = parent.byAdmin ? (this.adminName || parent.name) : parent.name;
+            singleItem.$data.replyOf = replaceUIString(UIStrings.ENTRY_REPLY_OF, {
+                parentName,
+            });
+            singleItem.$data.replyOfPaddingLeft = UIStrings.ENTRY_PRPLY_OF_PADDING;
+        }
+        this._threadMap.set(e.id, e);
+        this._threadElementMap.set(e.id, singleItem);
+        const target = sub ? sub.subComments : this._comments;
+        target.push(singleItem);
+        return singleItem;
+    }
+
     _printList() {
         this._comments = [];
-        const avatarSize = Config.avatarSize;
         this._threadData.forEach((e) => {
-            const oName = e.name;
-            const oAvatar = `${this.avatarPrefix + e.emailHashed}?s=${avatarSize}`;
-            const name = e.byAdmin ? (this.adminName || oName) : oName;
-            const avatar = e.byAdmin ? (this.adminAvatar || oAvatar) : oAvatar;
-            const singleItem = new Comment({
-                $methods: {
-                    jump: this._jumpTo.bind(this),
-                    reply: this._moveFormTo.bind(this),
-                },
-                $data: {
-                    id: e.id,
-                    name,
-                    avatar,
-                    website: e.byAdmin ? '' : e.website,
-                    content: e.content,
-                    datetime: e.createdAt.toISOString(),
-                    date: timeSince(e.createdAt),
-                    admin: UIStrings.ENTRY_ADMIN,
-                    adminHidden: e.byAdmin ? '' : 'hidden',
-                    adminPaddingLeft: UIStrings.ENTRY_ADMIN_PADDING,
-                    reply: UIStrings.ENTRY_REPLY,
-                },
-            });
-            this._threadMap.set(e.id, e);
-            this._threadElementMap.set(e.id, singleItem);
-            this._comments.push(singleItem);
+            const el = this._printEntry(e, null);
             if (e.sub) {
                 e.sub.forEach((f) => {
-                    const oNameSub = f.name;
-                    const oAvatarSub = `${this.avatarPrefix + f.emailHashed}?s=${avatarSize}`;
-                    const nameSub = f.byAdmin ? (this.adminName || oNameSub) : oNameSub;
-                    const avatarSub = f.byAdmin ? (this.adminAvatar || oAvatarSub) : oAvatarSub;
-                    const subSingleItem = new Comment({
-                        $methods: {
-                            jump: this._jumpTo.bind(this),
-                            reply: this._moveFormTo.bind(this),
-                        },
-                        $data: {
-                            id: f.id,
-                            name: nameSub,
-                            avatar: avatarSub,
-                            website: f.byAdmin ? '' : f.website,
-                            content: f.content,
-                            datetime: f.createdAt.toISOString(),
-                            date: timeSince(f.createdAt),
-                            admin: UIStrings.ENTRY_ADMIN,
-                            adminHidden: f.byAdmin ? '' : 'hidden',
-                            adminPaddingLeft: UIStrings.ENTRY_ADMIN_PADDING,
-                            parent: f.parent,
-                            reply: UIStrings.ENTRY_REPLY,
-                            replyOf: replaceUIString(UIStrings.ENTRY_REPLY_OF, {
-                                parentName: this._threadMap.get(f.parent).name,
-                            }),
-                            replyOfPaddingLeft: UIStrings.ENTRY_PRPLY_OF_PADDING,
-                        },
-                    });
-                    this._threadMap.set(f.id, f);
-                    this._threadElementMap.set(f.id, subSingleItem);
-                    singleItem.subComments.push(subSingleItem);
+                    this._printEntry(f, el);
                 });
             }
         });
