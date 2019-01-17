@@ -34,16 +34,7 @@ class PommentWidget extends Main {
                 enumerable: false,
             });
         });
-        window.addEventListener('keydown', (e) => {
-            if (e.key === 'Alt') {
-                this._showPostID();
-            }
-        });
-        window.addEventListener('keyup', (e) => {
-            if (e.key === 'Alt') {
-                this._hidePostID();
-            }
-        });
+        this._enablePostIDMagic();
     }
 
     async load() {
@@ -207,6 +198,19 @@ class PommentWidget extends Main {
 
     _hidePostID() {
         this._postIDHiddenStyle.textContent = '';
+    }
+
+    _enablePostIDMagic() {
+        window.addEventListener('keydown', (e) => {
+            if (e.key === 'Alt') {
+                this._showPostID();
+            }
+        });
+        window.addEventListener('keyup', (e) => {
+            if (e.key === 'Alt') {
+                this._hidePostID();
+            }
+        });
     }
 
     get loaded() {
