@@ -14,8 +14,12 @@ class PommentWidget extends Main {
     constructor(props) {
         super(props);
         this.avatarPrefix = props.avatarPrefix || 'https://secure.gravatar.com/avatar/';
+        this.adminName = props.adminName;
+        this.adminAvatar = props.adminAvatar;
         this.fixedHeight = props.fixedHeight || 0;
         this._loaded = false;
+        this._postIDHiddenStyle = document.head.appendChild(document.createElement('style'));
+        this._postIDHiddenStyle.dataset.usage = 'Pomment 评论 ID 隐藏样式';
         this._threadData = {};
         this._threadElementMap = new Map();
         this._threadMap = new Map();
@@ -29,6 +33,16 @@ class PommentWidget extends Main {
             Object.defineProperty(this, e, {
                 enumerable: false,
             });
+        });
+        window.addEventListener('keydown', (e) => {
+            if (e.key === 'Alt') {
+                this._showPostID();
+            }
+        });
+        window.addEventListener('keyup', (e) => {
+            if (e.key === 'Alt') {
+                this._hidePostID();
+            }
         });
     }
 
@@ -79,6 +93,10 @@ class PommentWidget extends Main {
         this._comments = [];
         const avatarSize = Config.avatarSize;
         this._threadData.forEach((e) => {
+            const oName = e.name;
+            const oAvatar = `${this.avatarPrefix + e.emailHashed}?s=${avatarSize}`;
+            const name = e.byAdmin ? (this.adminName || oName) : oName;
+            const avatar = e.byAdmin ? (this.adminAvatar || oAvatar) : oAvatar;
             const singleItem = new Comment({
                 $methods: {
                     jump: this._jumpTo.bind(this),
@@ -86,8 +104,8 @@ class PommentWidget extends Main {
                 },
                 $data: {
                     id: e.id,
-                    name: e.name,
-                    emailHashed: `${this.avatarPrefix + e.emailHashed}?s=${avatarSize}`,
+                    name,
+                    avatar,
                     content: e.content,
                     datetime: e.createdAt.toISOString(),
                     date: timeSince(e.createdAt),
@@ -102,6 +120,10 @@ class PommentWidget extends Main {
             this._comments.push(singleItem);
             if (e.sub) {
                 e.sub.forEach((f) => {
+                    const oNameSub = f.name;
+                    const oAvatarSub = `${this.avatarPrefix + f.emailHashed}?s=${avatarSize}`;
+                    const nameSub = f.byAdmin ? (this.adminName || oNameSub) : oNameSub;
+                    const avatarSub = f.byAdmin ? (this.adminAvatar || oAvatarSub) : oAvatarSub;
                     const subSingleItem = new Comment({
                         $methods: {
                             jump: this._jumpTo.bind(this),
@@ -109,8 +131,8 @@ class PommentWidget extends Main {
                         },
                         $data: {
                             id: f.id,
-                            name: f.name,
-                            emailHashed: `${this.avatarPrefix + f.emailHashed}?s=${avatarSize}`,
+                            name: nameSub,
+                            avatar: avatarSub,
                             content: f.content,
                             datetime: f.createdAt.toISOString(),
                             date: timeSince(f.createdAt),
@@ -190,6 +212,14 @@ class PommentWidget extends Main {
         this._moveFormTo({
             value: -1,
         });
+    }
+
+    _showPostID() {
+        this._postIDHiddenStyle.textContent = '';
+    }
+
+    _hidePostID() {
+        this._postIDHiddenStyle.textContent = 'pmnt-entry > div.upper > span.id { display: none }';
     }
 
     get loaded() {

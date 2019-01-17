@@ -2,12 +2,14 @@
     >pmnt-avatar-item
         >pmnt-avatar
             #aria-hidden = true
-            #style = background-image: url({{emailHashed}})
+            #style = background-image: url({{avatar}})
         >pmnt-content
             >pmnt-entry
                 >div.upper
                     >span.name
                         .{{name}}
+                    >span.id
+                        . ({{id}})
                     >a.reply-of
                         #style = padding-left: {{replyOfPaddingLeft = 0}}em
                         @click = jump:{{parent}}
