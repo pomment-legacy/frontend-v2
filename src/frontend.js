@@ -218,20 +218,24 @@ class PommentWidget extends Main {
     _submit() {
         this._form.message = null;
         if (this._form.email.trim() === '') {
-            this._spawnFormError('Email address is empty');
+            this._spawnFormError(UIStrings.FORM_EMPTY_EMAIL);
             return;
         }
         if (!/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(this._form.email.trim())) {
-            this._spawnFormError('Email address is invaild');
+            this._spawnFormError(UIStrings.FORM_BAD_EMAIL);
             return;
         }
         if (this._form.content.trim() === '') {
-            this._spawnFormError('Content is empty');
+            this._spawnFormError(UIStrings.FORM_EMPTY_CONTENT);
             return;
         }
         if (strSizeof(this._form.content) > Config.maxChar) {
-            this._spawnFormError(`Content length shouldn't be more than ${Config.maxChar} characters`);
+            this._spawnFormError(replaceUIString(UIStrings.FORM_BAD_CONTENT, {
+                maxChar: Config.maxChar,
+            }));
+            return;
         }
+        this._form.$data.submitUI = UIStrings.FORM_SUBMITTING;
     }
 
     _spawnFormError(error) {
