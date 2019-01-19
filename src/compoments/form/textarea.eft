@@ -7,4 +7,5 @@
         #rows = 4
         #id = area
         #autocomplete = new-password
+        %disabled = {{disabled}}
         %value = {{content}}

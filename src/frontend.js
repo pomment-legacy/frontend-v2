@@ -1,5 +1,6 @@
 import './sass/frontend.scss';
 import Pomment from 'pomment-sdk';
+import md5 from 'crypto-js/md5';
 import Main from './compoments/index.eft';
 import Bar from './compoments/bar/bar.eft';
 import Form from './compoments/form/main';
@@ -82,7 +83,7 @@ class PommentWidget extends Main {
         }
     }
 
-    _printEntry(e, sub) {
+    _printEntry(e, sub, unshift = false) {
         const avatarSize = Config.avatarSize;
         const oName = e.name;
         const oAvatar = `${this.avatarPrefix + e.emailHashed}?s=${avatarSize}`;
@@ -119,7 +120,7 @@ class PommentWidget extends Main {
         this._threadMap.set(e.id, e);
         this._threadElementMap.set(e.id, singleItem);
         const target = sub ? sub.subComments : this._comments;
-        target.push(singleItem);
+        target[unshift ? 'unshift' : 'push'](singleItem);
         return singleItem;
     }
 
@@ -215,17 +216,17 @@ class PommentWidget extends Main {
         });
     }
 
-    _submit() {
+    async _submit() {
         this._form.message = null;
-        if (this._form.email.trim() === '') {
+        if (this._form.email === '') {
             this._spawnFormError(UIStrings.FORM_EMPTY_EMAIL);
             return;
         }
-        if (!/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(this._form.email.trim())) {
+        if (!/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(this._form.email)) {
             this._spawnFormError(UIStrings.FORM_BAD_EMAIL);
             return;
         }
-        if (this._form.content.trim() === '') {
+        if (this._form.content === '') {
             this._spawnFormError(UIStrings.FORM_EMPTY_CONTENT);
             return;
         }
@@ -236,6 +237,34 @@ class PommentWidget extends Main {
             return;
         }
         this._form.$data.submitUI = UIStrings.FORM_SUBMITTING;
+        this._form.$data.disabled = 'disabled';
+        this._form.contentWrapper.$data.disabled = 'disabled';
+        try {
+            const data = await this._sdk.submitComment({
+                parent: this._currentTarget,
+                name: this._form.name,
+                email: this._form.email,
+                website: this._form.website,
+                content: this._form.content,
+                receiveEmail: false,
+            });
+            const issub = this._currentTarget >= 0;
+            this._printEntry({
+                ...data,
+                emailHashed: md5(data.email),
+                byAdmin: false,
+            }, issub, true);
+        } catch (e) {
+            console.error('[Pomment]', e);
+            this._spawnFormError(UIStrings.FORM_SUBMIT_ERROR);
+        }
+        this._unfreezeForm();
+    }
+
+    _unfreezeForm() {
+        this._form.$data.submitUI = UIStrings.FORM_SUBMIT;
+        this._form.$data.disabled = null;
+        this._form.contentWrapper.$data.disabled = null;
     }
 
     _spawnFormError(error) {

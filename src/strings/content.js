@@ -14,6 +14,7 @@ export default {
     FORM_EMPTY_CONTENT: 'Content is empty',
     FORM_BAD_EMAIL: 'Email address is invaild',
     FORM_BAD_CONTENT: 'Content length shouldn\'t be more than {{maxChar}} characters',
+    FORM_SUBMIT_ERROR: 'An error occurred while submitting the comment',
     TIME_NOW: 'Just now',
     TIME_SECOND: '{{ago}} seconds ago',
     TIME_MINUTE: '{{ago}} minutes ago',

@@ -45,19 +45,19 @@ class Form extends FormTemplate {
     }
 
     get name() {
-        return this.$data.name;
+        return this.$data.name.trim();
     }
 
     get email() {
-        return this.$data.email;
+        return this.$data.email.trim();
     }
 
     get website() {
-        return this.$data.website;
+        return this.$data.website.trim();
     }
 
     get content() {
-        return this.contentWrapper.$data.content;
+        return this.contentWrapper.$data.content.trim();
     }
 }
 

@@ -1,5 +1,9 @@
 pmnt-formbody, pmnt-edit {
     form {
+        transition: opacity 0.3s;
+        &.disabled {
+            opacity: 0.4;
+        }
         input, textarea {
             appearance: none;
             display: block;
@@ -84,9 +88,6 @@ pmnt-formbody, pmnt-edit {
             }
             &.cancel {
                 background-color: #ef5350;
-            }
-            &:disabled {
-                opacity: 0.4;
             }
         }
     }

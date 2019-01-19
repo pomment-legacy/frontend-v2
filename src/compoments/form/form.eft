@@ -6,7 +6,7 @@
             #aria-hidden = true
         >pmnt-content
             >pmnt-formbody
-                >form
+                >form.{{disabled}}
                     @submit.prevent = submit
                     #novalidate =
                     >div.info
@@ -14,23 +14,27 @@
                             #type = text
                             #placeholder = {{nameUI}}
                             #autocomplete = nickname
+                            %disabled = {{disabled}}
                             %value = {{name}}
                         >input
                             @change = updateAvatarEvent
                             #type = email
                             #placeholder = {{emailUI}}
                             #autocomplete = email
+                            %disabled = {{disabled}}
                             %value = {{email}}
                         >input
                             #type = url
                             #placeholder = {{websiteUI}}
                             #autocomplete = url
+                            %disabled = {{disabled}}
                             %value = {{website}}
                     -contentWrapper
                     >button.submit
                         #type = submit
-                        %disabled = {{disableSubmit}}
+                        %disabled = {{disabled}}
                         .{{submitUI}}
                     >button.cancel.{{cancelHidden = hidden}}
                         @click.prevent = cancel
+                        %disabled = {{disabled}}
                         .{{cancelUI}}
