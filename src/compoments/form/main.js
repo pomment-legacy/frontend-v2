@@ -4,7 +4,6 @@ import TextArea from './textarea.eft';
 import UIStrings from '../../strings/content';
 import Config from '../../config';
 import replaceUIString from '../../strings/replace';
-import strSizeof from './str-sizeof';
 
 function updateAvatar() {
     const root = this.root;
@@ -35,16 +34,30 @@ class Form extends FormTemplate {
                 focusEvent({ state }) {
                     state.$data.active = 'active';
                 },
-                inputEvent: (function inputEvent({ state }) {
+                inputEvent: (function inputEvent() {
                     this.area.style.height = '0px';
                     this.area.style.height = `${Math.max(this.minHeight, this.area.scrollHeight)}px`;
-                    this.tooMany = strSizeof(state.$data.content) > Config.maxChar;
-                    this.$data.disableSubmit = this.tooMany ? true : null;
                 }).bind(this),
             },
         });
         this.area = this.contentWrapper.$ctx.nodeInfo.element.childNodes[0];
         this.minHeight = 0;
+    }
+
+    get name() {
+        return this.$data.name;
+    }
+
+    get email() {
+        return this.$data.email;
+    }
+
+    get website() {
+        return this.$data.website;
+    }
+
+    get content() {
+        return this.contentWrapper.$data.content;
     }
 }
 

@@ -8,6 +8,7 @@
                 >div.upper
                     >a.name
                         #href = {{website}}
+                        #target = _blank
                         .{{name}}
                         >span.id
                             . ({{id}})

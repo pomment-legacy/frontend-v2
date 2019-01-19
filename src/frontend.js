@@ -9,6 +9,7 @@ import Config from './config';
 import makeTree from './tree';
 import timeSince from './utils/time';
 import replaceUIString from './strings/replace';
+import strSizeof from './utils/str-sizeof';
 
 class PommentWidget extends Main {
     constructor(props) {
@@ -54,6 +55,7 @@ class PommentWidget extends Main {
                 root: this,
                 $methods: {
                     cancel: this._cancelReplyOther.bind(this),
+                    submit: this._submit.bind(this),
                 },
             });
             this._defaultForm = this._form;
@@ -210,6 +212,41 @@ class PommentWidget extends Main {
             if (e.key === 'Alt') {
                 this._hidePostID();
             }
+        });
+    }
+
+    _submit() {
+        this._form.message = null;
+        if (this._form.email.trim() === '') {
+            this._spawnFormError('Email address is empty');
+            return;
+        }
+        if (!/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(this._form.email.trim())) {
+            this._spawnFormError('Email address is invaild');
+            return;
+        }
+        if (this._form.content.trim() === '') {
+            this._spawnFormError('Content is empty');
+            return;
+        }
+        if (strSizeof(this._form.content) > Config.maxChar) {
+            this._spawnFormError(`Content length shouldn't be more than ${Config.maxChar} characters`);
+        }
+    }
+
+    _spawnFormError(error) {
+        this._form.message = null;
+        this._form.message = new Bar({
+            $data: {
+                style: 'error',
+                message: error,
+                closeable: 'closeable',
+            },
+            $methods: {
+                close({ state }) {
+                    state.$umount();
+                },
+            },
         });
     }
 
