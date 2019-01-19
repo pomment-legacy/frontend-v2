@@ -249,8 +249,11 @@ class PommentWidget extends Main {
                 receiveEmail: false,
             });
             const data = { ...rawData, emailHashed: md5(rawData.email), byAdmin: false };
-            const issub = this._currentTarget >= 0;
-            this._printEntry(data, issub, true);
+            this._threadMap.set(data.id, data);
+            this._threadElementMap.set(
+                data.id,
+                this._printEntry(data, this._threadElementMap.get(data.parent), true),
+            );
         } catch (e) {
             console.error('[Pomment]', e);
             this._spawnFormError(UIStrings.FORM_SUBMIT_ERROR);
