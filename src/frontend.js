@@ -240,7 +240,7 @@ class PommentWidget extends Main {
         this._form.$data.disabled = 'disabled';
         this._form.contentWrapper.$data.disabled = 'disabled';
         try {
-            const data = await this._sdk.submitComment({
+            const rawData = await this._sdk.submitComment({
                 parent: this._currentTarget,
                 name: this._form.name,
                 email: this._form.email,
@@ -248,12 +248,9 @@ class PommentWidget extends Main {
                 content: this._form.content,
                 receiveEmail: false,
             });
+            const data = { ...rawData, emailHashed: md5(rawData.email), byAdmin: false };
             const issub = this._currentTarget >= 0;
-            this._printEntry({
-                ...data,
-                emailHashed: md5(data.email),
-                byAdmin: false,
-            }, issub, true);
+            this._printEntry(data, issub, true);
         } catch (e) {
             console.error('[Pomment]', e);
             this._spawnFormError(UIStrings.FORM_SUBMIT_ERROR);
