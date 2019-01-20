@@ -59,6 +59,33 @@ class Form extends FormTemplate {
     get content() {
         return this.contentWrapper.$data.content.trim();
     }
+
+    set name(value) {
+        this.$data.name = value;
+        return value;
+    }
+
+    set email(value) {
+        this.$data.email = value;
+        return value;
+    }
+
+    set website(value) {
+        this.$data.website = value;
+        return value;
+    }
+
+    set content(value) {
+        this.contentWrapper.$data.content = value;
+        return value;
+    }
+
+    clear() {
+        this.$data.name = '';
+        this.$data.email = '';
+        this.$data.website = '';
+        this.contentWrapper.$data.content = '';
+    }
 }
 
 export default Form;

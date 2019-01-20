@@ -83,12 +83,13 @@ class PommentWidget extends Main {
         }
     }
 
-    _printEntry(e, sub, unshift = false) {
+    _printEntry(e, sub) {
         const avatarSize = Config.avatarSize;
         const oName = e.name;
         const oAvatar = `${this.avatarPrefix + e.emailHashed}?s=${avatarSize}`;
         const name = e.byAdmin ? (this.adminName || oName) : oName;
         const avatar = e.byAdmin ? (this.adminAvatar || oAvatar) : oAvatar;
+        const website = e.byAdmin ? '' : (e.website || '');
         const singleItem = new Comment({
             $methods: {
                 jump: this._jumpTo.bind(this),
@@ -98,7 +99,7 @@ class PommentWidget extends Main {
                 id: e.id,
                 name,
                 avatar,
-                website: e.byAdmin ? '' : e.website,
+                website,
                 content: e.content,
                 datetime: e.createdAt.toISOString(),
                 date: timeSince(e.createdAt),
@@ -119,18 +120,17 @@ class PommentWidget extends Main {
         }
         this._threadMap.set(e.id, e);
         this._threadElementMap.set(e.id, singleItem);
-        const target = sub ? sub.subComments : this._comments;
-        target[unshift ? 'unshift' : 'push'](singleItem);
         return singleItem;
     }
 
     _printList() {
         this._comments = [];
         this._threadData.forEach((e) => {
-            const el = this._printEntry(e, null);
+            const el = this._printEntry(e);
+            this._comments.push(el);
             if (e.sub) {
                 e.sub.forEach((f) => {
-                    this._printEntry(f, el);
+                    el.subComments.push(this._printEntry(f, true));
                 });
             }
         });
@@ -248,12 +248,25 @@ class PommentWidget extends Main {
                 content: this._form.content,
                 receiveEmail: false,
             });
-            const data = { ...rawData, emailHashed: md5(rawData.email), byAdmin: false };
-            this._threadMap.set(data.id, data);
-            this._threadElementMap.set(
-                data.id,
-                this._printEntry(data, this._threadElementMap.get(data.parent), true),
-            );
+            const data = { ...rawData, emailHashed: `${md5(rawData.email)}`, byAdmin: false };
+            if (data.parent >= 0) {
+                const parent = this._threadMap.get(data.parent).parent;
+                if (parent >= 0) {
+                    // 新增加的评论隶属于隶属于其它评论的评论
+                    const root = this._threadElementMap.get(parent);
+                    const newElem = this._printEntry(data, true);
+                    root.subComments.push(newElem);
+                } else {
+                    // 新增加的评论隶属于独立的评论
+                    const root = this._threadElementMap.get(data.parent);
+                    const newElem = this._printEntry(data, true);
+                    root.subComments = [newElem];
+                }
+            } else {
+                // 新增加的评论不隶属于任何评论
+                const newElem = this._printEntry(data);
+                this._comments.unshift(newElem);
+            }
         } catch (e) {
             console.error('[Pomment]', e);
             this._spawnFormError(UIStrings.FORM_SUBMIT_ERROR);
