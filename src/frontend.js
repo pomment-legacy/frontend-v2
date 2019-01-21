@@ -21,7 +21,7 @@ class PommentWidget extends Main {
         this.fixedHeight = props.fixedHeight || 0;
         this._loaded = false;
         this._postIDHiddenStyle = document.head.appendChild(document.createElement('style'));
-        this._postIDHiddenStyle.dataset.usage = 'Pomment 评论 ID 隐藏样式';
+        this._postIDHiddenStyle.dataset.usage = 'Pomment post ID hidden style';
         this._threadData = {};
         this._threadElementMap = new Map();
         this._threadMap = new Map();
