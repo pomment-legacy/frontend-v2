@@ -3,7 +3,7 @@ pmnt-message {
     background-color: #666;
     color: #fff;
     font-weight: bold;
-    .content {
+    pmnt-message-text {
         padding: .5em .8em;
         line-height: 2em;
         width: 100%;
@@ -11,6 +11,7 @@ pmnt-message {
         a {
             cursor: pointer;
             text-decoration: none;
+            color: #fff;
             &:hover {
                 text-decoration: underline;
             }
