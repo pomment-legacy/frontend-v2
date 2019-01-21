@@ -4,6 +4,8 @@ interface PWProps {
     title?: string;
     avatarPrefix?: string;
     fixedHeight?: number;
+    adminName?: string;
+    adminAvatar?: string;
 }
 
 class PommentWidget {
