@@ -11,11 +11,14 @@ import eft from 'rollup-plugin-eft';
 import autoprefixer from 'autoprefixer';
 import clean from 'postcss-clean';
 import postCSS from 'rollup-plugin-postcss';
+import { version } from '../package.json';
+
+const env = process.env.NODE_ENV;
 
 const base = {
     input: 'src/frontend.js',
     output: {
-        file: `dist/pomment-frontend.${process.env.NODE_ENV === 'production' ? 'min.' : 'dev.'}js`,
+        file: `dist/pomment-frontend${env === 'production' ? `-${version}.min.` : '.dev.'}js`,
         name: 'PommentWidget',
         format: 'umd',
         sourcemap: true,
