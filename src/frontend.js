@@ -1,3 +1,5 @@
+/* global grecaptcha */
+
 import './sass/frontend.scss';
 import Pomment from 'pomment-sdk';
 import md5 from 'crypto-js/md5';
@@ -19,6 +21,7 @@ class PommentWidget extends Main {
         this.adminName = props.adminName;
         this.adminAvatar = props.adminAvatar;
         this.fixedHeight = props.fixedHeight || 0;
+        this.reCAPTCHA = props.reCAPTCHA;
         this._loaded = false;
         this._postIDHiddenStyle = document.head.appendChild(document.createElement('style'));
         this._postIDHiddenStyle.dataset.usage = 'Pomment post ID hidden style';
@@ -31,12 +34,19 @@ class PommentWidget extends Main {
             defaultTitle: props.title,
         });
         this._currentTarget = -1;
+        this._responseKey = null;
         Object.keys(this).forEach((e) => {
             Object.defineProperty(this, e, {
                 enumerable: false,
             });
         });
         this._enablePostIDMagic();
+        if (this.reCAPTCHA) {
+            grecaptcha.ready(async () => {
+                this._responseKey = await grecaptcha.execute(this.reCAPTCHA, { action: 'submit_comment' });
+                console.info('[Pomment]', 'reCAPTCHA v3 is ready!');
+            });
+        }
     }
 
     async load() {
@@ -236,6 +246,10 @@ class PommentWidget extends Main {
             }));
             return;
         }
+        if (this.reCAPTCHA && this._responseKey === null) {
+            this._spawnFormError(UIStrings.FORM_RECAPTCHA_NOT_READY);
+            return;
+        }
         this._form.$data.submitUI = UIStrings.FORM_SUBMITTING;
         this._form.$data.disabled = 'disabled';
         this._form.contentWrapper.$data.disabled = 'disabled';
@@ -247,6 +261,7 @@ class PommentWidget extends Main {
                 website: this._form.website,
                 content: this._form.content,
                 receiveEmail: false,
+                responseKey: this._responseKey,
             });
             const data = { ...rawData, emailHashed: `${md5(rawData.email)}`, byAdmin: false };
             if (data.parent >= 0) {
@@ -274,10 +289,15 @@ class PommentWidget extends Main {
         this._unfreezeForm();
     }
 
-    _unfreezeForm() {
+    async _unfreezeForm() {
         this._form.$data.submitUI = UIStrings.FORM_SUBMIT;
         this._form.$data.disabled = null;
         this._form.contentWrapper.$data.disabled = null;
+        if (this.reCAPTCHA) {
+            this._responseKey = null;
+            this._responseKey = await grecaptcha.execute(this.reCAPTCHA, { action: 'submit_comment' });
+            console.info('[Pomment]', 'reCAPTCHA v3 is ready again!');
+        }
     }
 
     _spawnFormError(error) {
