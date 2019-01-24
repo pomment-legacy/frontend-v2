@@ -115,7 +115,6 @@ class PommentWidget extends Main {
                 date: timeSince(e.createdAt),
                 admin: UIStrings.ENTRY_ADMIN,
                 adminHidden: e.byAdmin ? '' : 'hidden',
-                adminPaddingLeft: UIStrings.ENTRY_ADMIN_PADDING,
                 parent: e.parent,
                 reply: UIStrings.ENTRY_REPLY,
             },
@@ -126,7 +125,6 @@ class PommentWidget extends Main {
             singleItem.$data.replyOf = replaceUIString(UIStrings.ENTRY_REPLY_OF, {
                 parentName,
             });
-            singleItem.$data.replyOfPaddingLeft = UIStrings.ENTRY_PRPLY_OF_PADDING;
         }
         this._threadMap.set(e.id, e);
         this._threadElementMap.set(e.id, singleItem);

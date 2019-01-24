@@ -45,7 +45,7 @@ const base = {
             ],
         }),
         eslint({
-            exclude: ['**/*.html', '**/*.scss', '**/*.json', '**/*.eft'],
+            exclude: ['**/*.html', '**/*.css', '**/*.scss', '**/*.json', '**/*.eft'],
         }),
         eft(),
         nodent({

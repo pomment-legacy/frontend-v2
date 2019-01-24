@@ -13,11 +13,9 @@
                         >span.id
                             . ({{id}})
                     >a.reply-of
-                        #style = padding-left: {{replyOfPaddingLeft = 0}}em
                         @click = jump:{{parent}}
                         .{{replyOf}}
                     >span.admin.{{adminHidden = hidden}}
-                        #style = margin-left: {{adminPaddingLeft = 0}}em
                         .{{admin}}
                     >time
                         #datetime = {{datetime}}
