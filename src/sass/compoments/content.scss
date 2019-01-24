@@ -44,9 +44,11 @@ pmnt-entry {
         line-height: 1.6em;
     }
     a.name {
+        color: #000;
         font-weight: bold;
         text-decoration: none;
         &:hover, &:active {
+            color: #000;
             text-decoration: none;
         }
         &[href] {
