@@ -18,32 +18,7 @@
     <div style="max-width: 800px; margin: 0 auto;">
         <pmnt-main>
             <pmnt-message class="closeable success">
-                <div class="content">我是一条成功消息！</div>
-                <button class="close-btn">
-                    <svg viewBox="0 0 24 24" aria-hidden="true">
-                        <path d="M24 20.188l-8.315-8.209 8.2-8.282-3.697-3.697-8.212 8.318-8.31-8.203-3.666 3.666 8.321 8.24-8.206 8.313 3.666 3.666 8.237-8.318 8.285 8.203z">
-                    </svg>
-                </button>
-            </pmnt-message>
-            <pmnt-message class="closeable info">
-                <div class="content">Pomment
-                    是一种『刚好够用』的静态博客评论框解决方案喵。静态博客越来越流行，但市面上一直缺少一种『刚好够用』的静态博客评论框解决方案喵。那些评论框不是访客评论麻烦，就是功能过于简单或臃肿喵。</div>
-                <button class="close-btn">
-                    <svg viewBox="0 0 24 24" aria-hidden="true">
-                        <path d="M24 20.188l-8.315-8.209 8.2-8.282-3.697-3.697-8.212 8.318-8.31-8.203-3.666 3.666 8.321 8.24-8.206 8.313 3.666 3.666 8.237-8.318 8.285 8.203z">
-                    </svg>
-                </button>
-            </pmnt-message>
-            <pmnt-message class="closeable warn">
-                <div class="content">我是一条警告！</div>
-                <button class="close-btn">
-                    <svg viewBox="0 0 24 24" aria-hidden="true">
-                        <path d="M24 20.188l-8.315-8.209 8.2-8.282-3.697-3.697-8.212 8.318-8.31-8.203-3.666 3.666 8.321 8.24-8.206 8.313 3.666 3.666 8.237-8.318 8.285 8.203z">
-                    </svg>
-                </button>
-            </pmnt-message>
-            <pmnt-message class="closeable error">
-                <div class="content">我是一条错误消息！</div>
+                <pmnt-message-text>我是一条成功消息！</pmnt-message-text>
                 <button class="close-btn">
                     <svg viewBox="0 0 24 24" aria-hidden="true">
                         <path d="M24 20.188l-8.315-8.209 8.2-8.282-3.697-3.697-8.212 8.318-8.31-8.203-3.666 3.666 8.321 8.24-8.206 8.313 3.666 3.666 8.237-8.318 8.285 8.203z">
@@ -51,9 +26,6 @@
                 </button>
             </pmnt-message>
             <pmnt-form>
-                <pmnt-message>
-                    <div class="content">我是不可关闭的一条测试消息！</div>
-                </pmnt-message>
                 <pmnt-avatar-item>
                     <pmnt-avatar aria-hidden="true"></pmnt-avatar>
                     <pmnt-content>
@@ -69,28 +41,15 @@
                                         autocorrent="off"></textarea>
                                 </div>
                                 <button class="submit" type="submit">发布评论</button><button class="cancel">取消</button>
+                                <div class="receive-email">
+                                    <input type="checkbox" id="receive-email">
+                                    <label for="receive-email">接收邮件提醒</label>
+                                </div>
                             </form>
                         </pmnt-formbody>
                     </pmnt-content>
                 </pmnt-avatar-item>
             </pmnt-form>
-            <pmnt-comment>
-                <pmnt-avatar-item>
-                    <pmnt-avatar aria-hidden="true"></pmnt-avatar>
-                    <pmnt-content>
-                        <!-- pmnt-entry 与 pmnt-edit 二选一 -->
-                        <pmnt-edit>
-                            <form>
-                                <div class="content-wrapper">
-                                    <textarea placeholder="评论内容，最多可输入 1000 个字符*" rows="4" id="area" autocomplete="new-password"
-                                        autocorrent="off"></textarea>
-                                </div>
-                                <button class="submit" type="submit">保存编辑</button><button class="cancel">取消</button>
-                            </form>
-                        </pmnt-edit>
-                    </pmnt-content>
-                </pmnt-avatar-item>
-            </pmnt-comment>
             <pmnt-comment>
                 <pmnt-avatar-item>
                     <pmnt-avatar aria-hidden="true"></pmnt-avatar>
