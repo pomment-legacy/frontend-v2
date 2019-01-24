@@ -260,7 +260,7 @@ class PommentWidget extends Main {
                 email: this._form.email,
                 website: this._form.website,
                 content: this._form.content,
-                receiveEmail: false,
+                receiveEmail: this._form.receiveEmail,
                 responseKey: this._responseKey,
             });
             const data = { ...rawData, emailHashed: `${md5(rawData.email)}`, byAdmin: false };

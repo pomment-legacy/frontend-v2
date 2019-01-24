@@ -60,6 +60,10 @@ class Form extends FormTemplate {
         return this.contentWrapper.$data.content.trim();
     }
 
+    get receiveEmail() {
+        return !!this.$data.receiveEmail;
+    }
+
     set name(value) {
         this.$data.name = value;
         return value;
@@ -78,6 +82,11 @@ class Form extends FormTemplate {
     set content(value) {
         this.contentWrapper.$data.content = value;
         return value;
+    }
+
+    set receiveEmail(value) {
+        this.$data.receiveEmail = !!value;
+        return !!value;
     }
 
     clear() {
