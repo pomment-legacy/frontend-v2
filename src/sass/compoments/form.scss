@@ -129,6 +129,9 @@ pmnt-formbody {
             input#receive-email:focus {
                 outline: none;
             }
+            label[for=receive-email] {
+                padding-left: 0.5em;
+            }
         }
     }
 }

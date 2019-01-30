@@ -1,6 +1,6 @@
 pmnt-comment-tree > pmnt-comment:nth-child(odd) {
     background-color: #f6f6f6;
-    input:not([type='submit']) {
+    .info input {
         box-shadow: inset 0 0 0 10em #f6f6f6;
         &:focus {
             box-shadow: inset 0 0 0 10em #eaeff6;
