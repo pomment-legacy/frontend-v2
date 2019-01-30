@@ -38,11 +38,11 @@
                         @click.prevent = cancel
                         %disabled = {{disabled}}
                         .{{cancelUI}}
-                    >div.receive-email
+                    >div.receive-email.{{reHidden}}
                         >input
                             #type = checkbox
                             #id = receive-email
                             %value = {{receiveEmail}}
                         >label
                             #for = receive-email
-                            .接收邮件提醒
+                            .{{receiveEmailUI}}

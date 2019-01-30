@@ -9,6 +9,7 @@ export default {
     FORM_EMAIL_REQUIRED: 'Email*',
     FORM_WEBSITE: 'Website',
     FORM_CONTENT_REQUIRED: 'Content* (Up to {{maxChar}} characters)',
+    FORM_RECEIVE_EMAIL: 'Receive Email',
     FORM_SUBMIT: 'Submit',
     FORM_SUBMITTING: 'Submitting...',
     FORM_CANCEL: 'Cancel',

@@ -6,10 +6,11 @@ interface PWProps {
     fixedHeight?: number;
     adminName?: string;
     adminAvatar?: string;
+    showReceiveEmail?: boolean;
 }
 
-class PommentWidget {
-    constructor(props: PWProps): PommentWidget;
+declare class PommentWidget {
+    constructor(props: PWProps);
     load(...mountProps: any[]): Promise<any>;
     readonly loaded: boolean;
 }

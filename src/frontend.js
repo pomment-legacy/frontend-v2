@@ -22,6 +22,7 @@ class PommentWidget extends Main {
         this.adminAvatar = props.adminAvatar;
         this.fixedHeight = props.fixedHeight || 0;
         this.reCAPTCHA = props.reCAPTCHA;
+        this._showReceiveEmail = typeof props.showReceiveEmail === 'boolean' ? props.showReceiveEmail : true;
         this._loaded = false;
         this._postIDHiddenStyle = document.head.appendChild(document.createElement('style'));
         this._postIDHiddenStyle.dataset.usage = 'Pomment post ID hidden style';
@@ -64,6 +65,9 @@ class PommentWidget extends Main {
             this._loaded = true;
             this._form = new Form({
                 root: this,
+                $data: {
+                    reHidden: this._showReceiveEmail ? '' : 'hidden',
+                },
                 $methods: {
                     cancel: this._cancelReplyOther.bind(this),
                     submit: this._submit.bind(this),
@@ -258,7 +262,7 @@ class PommentWidget extends Main {
                 email: this._form.email,
                 website: this._form.website,
                 content: this._form.content,
-                receiveEmail: this._form.receiveEmail,
+                receiveEmail: this._showReceiveEmail ? this._form.receiveEmail : false,
                 responseKey: this._responseKey,
             });
             const data = { ...rawData, emailHashed: `${md5(rawData.email)}`, byAdmin: false };

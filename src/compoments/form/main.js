@@ -19,6 +19,7 @@ class Form extends FormTemplate {
         this.$data.websiteUI = UIStrings.FORM_WEBSITE;
         this.$data.submitUI = UIStrings.FORM_SUBMIT;
         this.$data.cancelUI = UIStrings.FORM_CANCEL;
+        this.$data.receiveEmailUI = UIStrings.FORM_RECEIVE_EMAIL;
         this.$methods.updateAvatarEvent = updateAvatar.bind(this);
         this.tooMany = false;
         this.contentWrapper = new TextArea({

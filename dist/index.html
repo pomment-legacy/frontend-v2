@@ -20,11 +20,12 @@
     <script src="pomment-frontend.dev.js"></script>
     <script>
     var plugin = new PommentWidget({
-        server: 'http://192.168.0.109:5005',
+        server: 'http://127.0.0.1:5005',
         url: 'https://www.tcdw.net/post/about/',
         adminName: 'tcdw',
         adminAvatar: 'https://www.tcdw.net/static/tcdw.jpg',
         title: 'Xperia XZ Premium',
+        showReceiveEmail: false,
     });
     plugin.$mount({
         target: document.getElementById("main"),
