@@ -6,6 +6,6 @@
             +_comments
     >pmnt-powered-by
         >a
-            #href = https://pomment.org/?utm_source=user_widget
+            #href = https://pomment.org/?utm_source=widget_2
             #rel = nofollow
             .{{poweredBy}}
