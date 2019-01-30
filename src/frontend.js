@@ -36,6 +36,7 @@ class PommentWidget extends Main {
         });
         this._currentTarget = -1;
         this._responseKey = null;
+        this.$data.poweredBy = UIStrings.POMMENT_POWERED_BY;
         Object.keys(this).forEach((e) => {
             Object.defineProperty(this, e, {
                 enumerable: false,

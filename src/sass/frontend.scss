@@ -1,3 +1,4 @@
+pmnt-outer,
 pmnt-main,
 pmnt-message,
 pmnt-message-text,
@@ -10,13 +11,17 @@ pmnt-comment-tree,
 pmnt-comment,
 pmnt-comment-nest,
 pmnt-entry,
-pmnt-edit, {
+pmnt-edit,
+pmnt-powered-by, {
     display: block;
+}
+
+pmnt-outer {
+    @import './compoments/font.scss';
 }
 
 pmnt-main {
     @import './compoments/main.scss';
-    @import './compoments/font.scss';
     @import './compoments/message.scss';
     @import './compoments/content.scss';
     @import './compoments/form.scss';

@@ -1,6 +1,7 @@
 import './ext-style.css';
 
 export default {
+    POMMENT_POWERED_BY: 'Powered by Pomment v2',
     POMMENT_LOADING: 'Initializing Pomment ...',
     POMMENT_LOADING_FAILED: 'Failed to initialize Pomment. ',
     POMMENT_LOADING_RETRY: 'Retry?',

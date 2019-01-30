@@ -1,5 +1,11 @@
->pmnt-main
-    -_headerMessage
-    -_defaultForm
-    >pmnt-comment-tree
-        +_comments
+>pmnt-outer
+    >pmnt-main
+        -_headerMessage
+        -_defaultForm
+        >pmnt-comment-tree
+            +_comments
+    >pmnt-powered-by
+        >a
+            #href = https://pomment.org/?utm_source=user_widget
+            #rel = nofollow
+            .{{poweredBy}}
