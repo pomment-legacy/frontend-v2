@@ -21,7 +21,7 @@ const base = {
         file: `dist/pomment-frontend${env === 'production' ? `-${version}.min.` : '.dev.'}js`,
         name: 'PommentWidget',
         format: 'umd',
-        sourcemap: true,
+        sourcemap: (env !== 'production'),
         // globals: {
         //     '@pomment/sdk': 'Pomment',
         // },
