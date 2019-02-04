@@ -20,13 +20,13 @@ pmnt-avatar-item {
 }
 
 pmnt-avatar {
-    width: 5em;
-    height: 5em;
+    width: 4em;
+    height: 4em;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     background-color: #fff;
-    border-radius: 50%;
+    border-radius: 0.6em;
     position: absolute;
     left: 0.5em;
     top: 0.5em;
@@ -34,7 +34,7 @@ pmnt-avatar {
 }
 
 pmnt-content {
-    margin-left: 6em;
+    margin-left: 5em;
 }
 
 pmnt-entry {
