@@ -1,6 +1,6 @@
 {
   "name": "pomment-frontend",
-  "version": "2.0.5",
+  "version": "2.0.6",
   "description": "Default user interface of Pomment",
   "main": "index.js",
   "repository": "git@git.reallserver.cn:pomment/frontend-v2.git",
@@ -37,6 +37,6 @@
   "dependencies": {
     "crypto-js": "^3.1.9-1",
     "ef-core": "^0.8.4",
-    "pomment-sdk": "^2.0.3"
+    "pomment-sdk": "^2.0.5"
   }
 }
