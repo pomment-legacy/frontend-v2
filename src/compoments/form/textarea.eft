@@ -1,5 +1,5 @@
 >div.content-wrapper.{{active}}
-    >textarea
+    >textarea#inputArea
         @blur = blurEvent
         @focus = focusEvent
         @input = inputEvent

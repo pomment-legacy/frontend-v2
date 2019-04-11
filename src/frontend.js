@@ -151,7 +151,7 @@ class PommentWidget extends Main {
 
     _jumpTo(props) {
         const id = props.value;
-        const element = this._threadElementMap.get(id).$ctx.nodeInfo.element;
+        const element = this._threadElementMap.get(id).$refs.comment;
         window.scrollTo({
             top: element.offsetTop - this.fixedHeight,
             behavior: 'smooth',

@@ -1,4 +1,4 @@
->pmnt-comment
+>pmnt-comment#comment
     >pmnt-avatar-item
         >pmnt-avatar
             #aria-hidden = true

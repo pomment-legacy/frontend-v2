@@ -41,7 +41,7 @@ class Form extends FormTemplate {
                 }).bind(this),
             },
         });
-        this.area = this.contentWrapper.$ctx.nodeInfo.element.childNodes[0];
+        this.area = this.contentWrapper.$refs.inputArea;
         this.minHeight = 0;
     }
 
