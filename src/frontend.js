@@ -184,13 +184,15 @@ class PommentWidget extends Main {
         this._form.$data.cancelHidden = '';
 
         // 在上方展示出『正在回复某人』的提示栏
+        const want = this._threadMap.get(id);
+        const name = want.byAdmin ? this.adminName : want.name;
         this._headerMessage = null;
         this._headerMessage = new Bar({
             $data: {
                 closeable: 'closeable',
                 style: 'info',
                 link: replaceUIString(UIStrings.POMMENT_REPLYING, {
-                    name: this._threadMap.get(id).name,
+                    name,
                 }),
             },
             $methods: {
