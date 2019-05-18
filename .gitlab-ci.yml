@@ -1,0 +1,9 @@
+stages:
+  - push
+
+push_master:
+  stage: push
+  only:
+    - master
+  script:
+    - git push --set-upstream https://${github_key}@github.com/pomment/frontend.git HEAD:master
