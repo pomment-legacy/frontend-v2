@@ -39,10 +39,10 @@
                         %disabled = {{disabled}}
                         .{{cancelUI}}
                     >div.receive-email.{{reHidden}}
-                        >input
+                        >input.magic-checkbox
                             #type = checkbox
                             #id = receive-email
-                            %value = {{receiveEmail}}
+                            %checked = {{receiveEmail}}
                         >label
                             #for = receive-email
                             .{{receiveEmailUI}}
