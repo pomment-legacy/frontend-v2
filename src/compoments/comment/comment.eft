@@ -3,10 +3,12 @@
         >pmnt-avatar
             #aria-hidden = true
             #style = background-image: url({{avatar}})
+            >div.unknown-guy
+                #style = display: {{showUnknownAvatar}}
         >pmnt-content
             >pmnt-entry
                 >div.upper
-                    >a.name
+                    >a.name.{{nameless}}
                         #href = {{website}}
                         #target = _blank
                         .{{name}}

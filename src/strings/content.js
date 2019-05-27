@@ -30,4 +30,5 @@ export default {
     ENTRY_ADMIN: 'MOD',
     ENTRY_REPLY: 'Reply',
     ENTRY_REPLY_OF: '(Replied to {{parentName}})',
+    ENTRY_NAMELESS: 'Unknown Guest',
 };

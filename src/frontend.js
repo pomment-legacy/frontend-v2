@@ -100,11 +100,24 @@ class PommentWidget extends Main {
 
     _printEntry(e, sub) {
         const avatarSize = Config.avatarSize;
-        const oName = e.name;
-        const oAvatar = `${this.avatarPrefix + e.emailHashed}?s=${avatarSize}`;
-        const name = e.byAdmin ? (this.adminName || oName) : oName;
-        const avatar = e.byAdmin ? (this.adminAvatar || oAvatar) : oAvatar;
-        const website = e.byAdmin ? '' : (e.website || '');
+        let name;
+        let avatar;
+        let website;
+        let showAvatar;
+        if (e.name === null && !e.byAdmin) {
+            name = UIStrings.ENTRY_NAMELESS;
+            e.name = UIStrings.ENTRY_NAMELESS;
+            avatar = null;
+            website = null;
+            showAvatar = false;
+        } else {
+            const oName = e.name;
+            const oAvatar = `${this.avatarPrefix + e.emailHashed}?s=${avatarSize}`;
+            name = e.byAdmin ? (this.adminName || oName) : oName;
+            avatar = e.byAdmin ? (this.adminAvatar || oAvatar) : oAvatar;
+            website = e.byAdmin ? '' : (e.website || '');
+            showAvatar = true;
+        }
         const singleItem = new Comment({
             $methods: {
                 jump: this._jumpTo.bind(this),
@@ -122,6 +135,8 @@ class PommentWidget extends Main {
                 adminHidden: e.byAdmin ? '' : 'hidden',
                 parent: e.parent,
                 reply: UIStrings.ENTRY_REPLY,
+                showUnknownAvatar: showAvatar ? 'hidden' : 'block',
+                nameless: showAvatar ? '' : 'nameless',
             },
         });
         if (sub) {
