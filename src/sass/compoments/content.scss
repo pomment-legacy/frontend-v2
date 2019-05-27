@@ -61,7 +61,11 @@ pmnt-entry {
         font-weight: bold;
         text-decoration: none;
         &.nameless {
-            color: rgba(0, 0, 0, 0.5);
+            color: rgba(0, 0, 0, 0.4);
+            &:hover, &:active {
+                color: rgba(0, 0, 0, 0.4);
+                text-decoration: none;
+            }
         }
         &:hover, &:active {
             color: #000;
