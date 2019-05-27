@@ -1,6 +1,6 @@
 {
   "name": "pomment-frontend",
-  "version": "2.1.1",
+  "version": "2.1.2",
   "description": "Default user interface of Pomment",
   "main": "index.js",
   "repository": "git@git.reallserver.cn:pomment/frontend-v2.git",

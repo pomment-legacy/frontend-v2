@@ -132,10 +132,10 @@ class PommentWidget extends Main {
                 datetime: e.createdAt.toISOString(),
                 date: timeSince(e.createdAt),
                 admin: UIStrings.ENTRY_ADMIN,
-                adminHidden: e.byAdmin ? '' : 'hidden',
+                adminHidden: e.byAdmin ? '' : 'none',
                 parent: e.parent,
                 reply: UIStrings.ENTRY_REPLY,
-                showUnknownAvatar: showAvatar ? 'hidden' : 'block',
+                showUnknownAvatar: showAvatar ? 'none' : 'flex',
                 nameless: showAvatar ? '' : 'nameless',
             },
         });
