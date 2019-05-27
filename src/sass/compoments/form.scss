@@ -93,12 +93,19 @@ pmnt-formbody {
                 }
             }
             &.cancel {
-                background-color: #ef5350;
+                background-color: #f44336;
+                box-shadow: 0 0 0.6em 0 rgba(186, 0, 12, 0);
+                &:focus {
+                    outline: none;
+                    background-color: #ba000d;
+                    box-shadow: 0 0 0.6em 0 rgba(186, 0, 12, 0.55);
+                }
             }
         }
         div.receive-email {
             display: inline-block;
             margin-left: 0.5em;
+            line-height: 2em;
             .magic-checkbox:checked+label:before {
                 border: 1px solid #3e97eb;
             }
@@ -107,11 +114,11 @@ pmnt-formbody {
                 height: 14px;
             }
             .magic-checkbox+label:before, .magic-radio+label:before {
-                top: -3px;
+                top: 4px;
                 transition: background-color 0.2s, border 0.2s;
             }
             .magic-checkbox+label:after {
-                top: -1px;
+                top: 6px;
             }
         }
     }
