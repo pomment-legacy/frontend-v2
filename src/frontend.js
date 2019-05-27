@@ -107,8 +107,8 @@ class PommentWidget extends Main {
         if (e.name === null && !e.byAdmin) {
             name = UIStrings.ENTRY_NAMELESS;
             e.name = UIStrings.ENTRY_NAMELESS;
-            avatar = null;
-            website = null;
+            avatar = '';
+            website = '';
             showAvatar = false;
         } else {
             const oName = e.name;
