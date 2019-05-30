@@ -302,6 +302,7 @@ class PommentWidget extends Main {
                 const newElem = this._printEntry(data);
                 this._comments.unshift(newElem);
             }
+            this._form.content = '';
         } catch (e) {
             console.error('[Pomment]', e);
             this._spawnFormError(UIStrings.FORM_SUBMIT_ERROR);
