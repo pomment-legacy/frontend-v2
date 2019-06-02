@@ -38,6 +38,6 @@
     "crypto-js": "^3.1.9-1",
     "ef-core": "^0.8.4",
     "magic-check": "^1.0.3",
-    "pomment-sdk": "^2.0.5"
+    "pomment-sdk": "^2.0.6"
   }
 }
