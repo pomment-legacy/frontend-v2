@@ -116,16 +116,18 @@ class PommentWidget extends Main {
             name = e.byAdmin ? (this.adminName || oName) : oName;
             avatar = e.byAdmin ? (this.adminAvatar || oAvatar) : oAvatar;
             website = e.byAdmin ? '' : (e.website || '');
-            try {
-                const url = new URL(website);
-                // eslint-disable-next-line no-script-url
-                if (url.protocol === 'javascript:') {
-                    website = '';
-                } else {
-                    website = url.toString();
+            if (website !== '') {
+                try {
+                    const url = new URL(website);
+                    // eslint-disable-next-line no-script-url
+                    if (url.protocol === 'javascript:') {
+                        website = '';
+                    } else {
+                        website = url.toString();
+                    }
+                } catch (err) {
+                    website = `http://${website}`;
                 }
-            } catch (err) {
-                website = `http://${website}`;
             }
             showAvatar = true;
         }

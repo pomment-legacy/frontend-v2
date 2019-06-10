@@ -1,0 +1,3 @@
+!dist/*.min.css
+!dist/*.min.js
+.DS_Store
