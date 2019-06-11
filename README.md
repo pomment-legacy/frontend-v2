@@ -1,6 +1,6 @@
 # Pomment Frontend v2
 
-评论系统 Pomment 的官方访客前端（客户端）。该组件基于 ef.js 实现，可单独使用或用于已有的 ef.js 项目中。
+评论系统 Pomment 的官方访客前端（客户端）。该组件基于 [ef.js](https://ef.js.org) 实现，可单独使用或用于已有的 ef.js 项目中。
 
 ## 安装
 

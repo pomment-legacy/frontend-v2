@@ -1,14 +1,19 @@
 {
   "name": "pomment-frontend",
-  "version": "2.1.6",
+  "version": "2.1.7",
   "description": "Default user interface of Pomment",
   "main": "index.js",
-  "repository": "git@git.reallserver.cn:pomment/frontend-v2.git",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pomment/frontend.git"
+  },
   "author": "tcdw <tcdw2011@gmail.com>",
   "license": "BSD-3-Clause",
   "devDependencies": {
     "autoprefixer": "^9.5.1",
     "chokidar": "^2.1.5",
+    "cross-env": "^5.2.0",
+    "del-cli": "^2.0.0",
     "eft-parser": "^0.8.2",
     "eslint": "^5.16.0",
     "eslint-config-airbnb-base": "^13.1.0",
@@ -30,9 +35,10 @@
   },
   "scripts": {
     "dev": "rollup -c ./scripts/rollup.config.js -w",
-    "build": "NODE_ENV=production rollup -c ./scripts/rollup.config.js",
+    "build": "cross-env NODE_ENV=production rollup -c ./scripts/rollup.config.js",
     "build-unofficial": "rollup -c ./scripts/rollup.config.js",
-    "lint": "eslint --ext .js src"
+    "lint": "eslint --ext .js src",
+    "clean": "del-cli dist/*.js dist/*.css"
   },
   "dependencies": {
     "crypto-js": "^3.1.9-1",
