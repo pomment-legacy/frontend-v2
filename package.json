@@ -1,8 +1,8 @@
 {
   "name": "pomment-frontend",
-  "version": "2.1.8",
+  "version": "2.1.9",
   "description": "Default user interface of Pomment",
-  "main": "index.js",
+  "main": "./src/frontend.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/pomment/frontend.git"

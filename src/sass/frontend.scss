@@ -22,7 +22,7 @@ pmnt-outer {
 }
 
 pmnt-main {
-    @import '../../node_modules/magic-check/sass/magic-check.scss';
+    @import '~magic-check/sass/magic-check.scss';
     @import './compoments/main.scss';
     @import './compoments/message.scss';
     @import './compoments/content.scss';

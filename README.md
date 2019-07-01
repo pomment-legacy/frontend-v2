@@ -26,7 +26,7 @@ npm install pomment-frontend
 ```
 
 ```javascript
-import PommentWideget from 'pomment-frontend';
+import PommentWidget from 'pomment-frontend';
 
 const plugin = new PommentWidget({
     // ...
