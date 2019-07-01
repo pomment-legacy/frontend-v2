@@ -46,19 +46,19 @@ class Form extends FormTemplate {
     }
 
     get name() {
-        return this.$data.name.trim();
+        return this.$data.name ? this.$data.name.trim() : '';
     }
 
     get email() {
-        return this.$data.email.trim();
+        return this.$data.email ? this.$data.email.trim() : '';
     }
 
     get website() {
-        return this.$data.website.trim();
+        return this.$data.website ? this.$data.website.trim() : '';
     }
 
     get content() {
-        return this.contentWrapper.$data.content.trim();
+        return this.contentWrapper.$data.content ? this.contentWrapper.$data.content.trim() : '';
     }
 
     get receiveEmail() {
