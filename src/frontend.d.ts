@@ -7,6 +7,7 @@ interface PWProps {
     adminName?: string;
     adminAvatar?: string;
     showReceiveEmail?: boolean;
+    SDKProvider?: Function;
 }
 
 declare class PommentWidget {

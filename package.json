@@ -1,6 +1,6 @@
 {
   "name": "pomment-frontend",
-  "version": "2.1.9",
+  "version": "2.1.10",
   "description": "Default user interface of Pomment",
   "main": "./src/frontend.js",
   "repository": {
@@ -14,7 +14,7 @@
     "chokidar": "^2.1.5",
     "cross-env": "^5.2.0",
     "del-cli": "^2.0.0",
-    "eft-parser": "^0.8.2",
+    "eft-parser": "^0.9.6",
     "eslint": "^5.16.0",
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-plugin-import": "^2.16.0",
@@ -42,7 +42,7 @@
   },
   "dependencies": {
     "crypto-js": "^3.1.9-1",
-    "ef-core": "^0.8.4",
+    "ef-core": "^0.9.7",
     "magic-check": "^1.0.3",
     "pomment-sdk": "^2.0.6"
   }
