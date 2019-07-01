@@ -17,6 +17,7 @@ import strSizeof from './utils/str-sizeof';
 class PommentWidget extends Main {
     constructor(props) {
         super(props);
+        this.SDKProvider = props.SDKProvider || Pomment;
         this.avatarPrefix = props.avatarPrefix || 'https://secure.gravatar.com/avatar/';
         this.adminName = props.adminName;
         this.adminAvatar = props.adminAvatar;
@@ -29,7 +30,7 @@ class PommentWidget extends Main {
         this._threadData = {};
         this._threadElementMap = new Map();
         this._threadMap = new Map();
-        this._sdk = new Pomment({
+        this._sdk = new this.SDKProvider({
             server: props.server,
             defaultURL: props.url,
             defaultTitle: props.title,
