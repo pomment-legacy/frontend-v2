@@ -1,6 +1,6 @@
 {
   "name": "pomment-frontend",
-  "version": "2.1.10",
+  "version": "2.1.11",
   "description": "Default user interface of Pomment",
   "main": "./src/frontend.js",
   "repository": {
@@ -35,7 +35,7 @@
   },
   "scripts": {
     "dev": "rollup -c ./scripts/rollup.config.js -w",
-    "build": "cross-env NODE_ENV=production rollup -c ./scripts/rollup.config.js",
+    "build": "del-cli dist/*.js dist/*.css dist/*.map && cross-env NODE_ENV=production rollup -c ./scripts/rollup.config.js",
     "build-unofficial": "rollup -c ./scripts/rollup.config.js",
     "lint": "eslint --ext .js src",
     "clean": "del-cli dist/*.js dist/*.css"
