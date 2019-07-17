@@ -11,7 +11,6 @@ import eft from 'rollup-plugin-eft';
 import autoprefixer from 'autoprefixer';
 import clean from 'postcss-clean';
 import postCSS from 'rollup-plugin-postcss';
-import { version } from '../package.json';
 
 const env = process.env.NODE_ENV;
 
