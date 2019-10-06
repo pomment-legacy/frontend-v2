@@ -113,7 +113,7 @@ class PommentWidget extends Main {
             showAvatar = false;
         } else {
             const oName = e.name;
-            const oAvatar = `${this.avatarPrefix + e.emailHashed}?s=${avatarSize}`;
+            const oAvatar = e.avatar === null ? `${this.avatarPrefix + e.emailHashed}?s=${avatarSize}` : e.avatar;
             name = e.byAdmin ? (this.adminName || oName) : oName;
             avatar = e.byAdmin ? (this.adminAvatar || oAvatar) : oAvatar;
             website = e.byAdmin ? '' : (e.website || '');

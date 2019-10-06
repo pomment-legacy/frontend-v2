@@ -1,6 +1,6 @@
 {
   "name": "pomment-frontend",
-  "version": "2.1.12",
+  "version": "2.1.13",
   "description": "Default user interface of Pomment",
   "main": "./src/frontend.js",
   "repository": {
@@ -10,28 +10,28 @@
   "author": "tcdw <tcdw2011@gmail.com>",
   "license": "BSD-3-Clause",
   "devDependencies": {
-    "autoprefixer": "^9.5.1",
-    "chokidar": "^2.1.5",
-    "cross-env": "^5.2.0",
-    "del-cli": "^2.0.0",
+    "autoprefixer": "^9.6.4",
+    "chokidar": "^3.2.1",
+    "cross-env": "^6.0.3",
+    "del-cli": "^3.0.0",
     "eft-parser": "^0.9.6",
-    "eslint": "^5.16.0",
-    "eslint-config-airbnb-base": "^13.1.0",
-    "eslint-plugin-import": "^2.16.0",
+    "eslint": "^6.5.1",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-plugin-import": "^2.18.2",
     "node-sass": "^4.12.0",
     "postcss-clean": "^1.1.0",
-    "rollup": "^1.10.0",
-    "rollup-plugin-buble": "^0.19.4",
-    "rollup-plugin-commonjs": "^9.3.4",
+    "rollup": "^1.23.1",
+    "rollup-plugin-buble": "^0.19.8",
+    "rollup-plugin-commonjs": "^10.1.0",
     "rollup-plugin-eft": "^0.3.0",
-    "rollup-plugin-eslint": "^5.1.0",
+    "rollup-plugin-eslint": "^7.0.0",
     "rollup-plugin-json": "^4.0.0",
-    "rollup-plugin-node-resolve": "^4.2.3",
+    "rollup-plugin-node-resolve": "^5.2.0",
     "rollup-plugin-nodent": "^0.2.2",
     "rollup-plugin-postcss": "^2.0.3",
     "rollup-plugin-progress": "^1.1.1",
     "rollup-plugin-replace": "^2.2.0",
-    "rollup-plugin-uglify": "^6.0.2"
+    "rollup-plugin-uglify": "^6.0.3"
   },
   "scripts": {
     "dev": "rollup -c ./scripts/rollup.config.js -w",
@@ -44,6 +44,6 @@
     "crypto-js": "^3.1.9-1",
     "ef-core": "^0.9.7",
     "magic-check": "^1.0.3",
-    "pomment-sdk": "^2.0.6"
+    "pomment-sdk": "^2.2.0"
   }
 }
