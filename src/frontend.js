@@ -25,8 +25,6 @@ class PommentWidget extends Main {
         this.reCAPTCHA = props.reCAPTCHA;
         this._showReceiveEmail = typeof props.showReceiveEmail === 'boolean' ? props.showReceiveEmail : true;
         this._loaded = false;
-        this._postIDHiddenStyle = document.head.appendChild(document.createElement('style'));
-        this._postIDHiddenStyle.dataset.usage = 'Pomment post ID hidden style';
         this._threadData = {};
         this._threadElementMap = new Map();
         this._threadMap = new Map();
@@ -43,7 +41,6 @@ class PommentWidget extends Main {
                 enumerable: false,
             });
         });
-        this._enablePostIDMagic();
         if (this.reCAPTCHA) {
             grecaptcha.ready(async () => {
                 this._responseKey = await grecaptcha.execute(this.reCAPTCHA, { action: 'submit_comment' });
@@ -236,27 +233,6 @@ class PommentWidget extends Main {
         this._headerMessage = null;
         this._moveFormTo({
             value: -1,
-        });
-    }
-
-    _showPostID() {
-        this._postIDHiddenStyle.textContent = 'pmnt-entry > div.upper > a.name > span.id { display: inline }';
-    }
-
-    _hidePostID() {
-        this._postIDHiddenStyle.textContent = '';
-    }
-
-    _enablePostIDMagic() {
-        window.addEventListener('keydown', (e) => {
-            if (e.key === 'Alt') {
-                this._showPostID();
-            }
-        });
-        window.addEventListener('keyup', (e) => {
-            if (e.key === 'Alt') {
-                this._hidePostID();
-            }
         });
     }
 
