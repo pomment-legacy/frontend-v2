@@ -1,4 +1,4 @@
-pmnt-formbody {
+div.pmnt-formbody {
     form {
         transition: opacity 0.3s;
         &.disabled {
@@ -124,6 +124,6 @@ pmnt-formbody {
     }
 }
 
-pmnt-edit, pmnt-formbody form {
+div.pmnt-edit, div.pmnt-formbody form {
     padding: 0.25em;
 }

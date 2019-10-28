@@ -1,27 +1,9 @@
-pmnt-outer,
-pmnt-main,
-pmnt-message,
-pmnt-message-text,
-pmnt-form,
-pmnt-avatar-item,
-pmnt-avatar,
-pmnt-content,
-pmnt-formbody,
-pmnt-comment-tree,
-pmnt-comment,
-pmnt-comment-nest,
-pmnt-entry,
-pmnt-edit,
-pmnt-powered-by {
-    display: block;
-}
-
-pmnt-outer {
+div.pmnt-outer {
     @import './compoments/font.scss';
     @import './compoments/powered-by.scss';
 }
 
-pmnt-main {
+div.pmnt-main {
     @import '~magic-check/sass/magic-check.scss';
     @import './compoments/main.scss';
     @import './compoments/message.scss';

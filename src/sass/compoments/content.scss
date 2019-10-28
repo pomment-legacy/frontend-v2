@@ -1,4 +1,4 @@
-pmnt-comment-tree > pmnt-comment:nth-child(odd) {
+div.pmnt-comment-tree > div.pmnt-comment:nth-child(odd) {
     background-color: #f6f6f6;
     .info input {
         box-shadow: inset 0 0 0 10em #f6f6f6;
@@ -14,12 +14,12 @@ pmnt-comment-tree > pmnt-comment:nth-child(odd) {
     }
 }
 
-pmnt-avatar-item {
+div.pmnt-avatar-item {
     min-height: 6em;
     position: relative;
 }
 
-pmnt-avatar {
+div.pmnt-avatar {
     width: 4em;
     height: 4em;
     background-size: cover;
@@ -46,11 +46,11 @@ pmnt-avatar {
     }
 }
 
-pmnt-content {
+div.pmnt-content {
     margin-left: 5em;
 }
 
-pmnt-entry {
+div.pmnt-entry {
     margin: 0 .5em;
     .upper {
         padding: 0.3em 0;
@@ -145,11 +145,11 @@ pmnt-entry {
     }
 }
 
-pmnt-comment-nest {
+div.pmnt-comment-nest {
     border-left: #c1c1c1 0.25em solid;
-    pmnt-comment {
+    div.pmnt-comment {
         background-color: transparent !important;
-        pmnt-entry {
+        div.pmnt-entry {
             a.reply-of {
                 display: inline;
             }
