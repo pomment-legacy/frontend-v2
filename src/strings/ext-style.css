@@ -1,7 +1,7 @@
-pmnt-entry > div.upper > a.reply-of {
+div.pmnt-entry > div.upper > a.reply-of {
     padding-left: 0.5em;
 }
 
-pmnt-entry > div.upper > span {
+div.pmnt-entry > div.upper > span {
     margin-left: 1em;
 }
