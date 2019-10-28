@@ -1,10 +1,10 @@
->pmnt-outer
-    >pmnt-main
+>div.pmnt-outer
+    >div.pmnt-main
         -_headerMessage
         -_defaultForm
-        >pmnt-comment-tree
+        >div.pmnt-comment-tree
             +_comments
-    >pmnt-powered-by
+    >div.pmnt-powered-by
         >a
             #href = https://pomment.org
             #rel = nofollow

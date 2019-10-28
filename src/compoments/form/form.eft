@@ -1,11 +1,11 @@
->pmnt-form
+>div.pmnt-form
     -message
-    >pmnt-avatar-item
-        >pmnt-avatar
+    >div.pmnt-avatar-item
+        >div.pmnt-avatar
             #style = background-image: url({{avatar}})
             #aria-hidden = true
-        >pmnt-content
-            >pmnt-formbody
+        >div.pmnt-content
+            >div.pmnt-formbody
                 >form.{{disabled}}
                     @submit.prevent = submit
                     #novalidate =

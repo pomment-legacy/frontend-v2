@@ -1,16 +1,17 @@
->pmnt-comment#comment
-    >pmnt-avatar-item
-        >pmnt-avatar
+>div.pmnt-comment#comment
+    >div.pmnt-avatar-item
+        >div.pmnt-avatar
             #aria-hidden = true
             #style = background-image: url({{avatar}})
             >div.unknown-guy
                 #style = display: {{showUnknownAvatar}}
-        >pmnt-content
-            >pmnt-entry
+        >div.pmnt-content
+            >div.pmnt-entry
                 >div.upper
                     >a.name.{{nameless}}
                         #href = {{website}}
                         #target = _blank
+                        #rel = nofollow
                         .{{name}}
                         >span.id
                             . ({{id}})
@@ -31,5 +32,5 @@
                             @click = reply:{{id}}
                             .{{reply}}
     -form
-    >pmnt-comment-nest
+    >div.pmnt-comment-nest
         +subComments

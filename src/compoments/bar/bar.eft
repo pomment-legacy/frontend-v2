@@ -1,5 +1,5 @@
->pmnt-message.{{closeable}}.{{style}}
-    >pmnt-message-text
+>div.pmnt-message.{{closeable}}.{{style}}
+    >div.pmnt-message-text
         .{{message}}
         >a
             @click = link
