@@ -273,7 +273,12 @@ class PommentWidget extends Main {
                 receiveEmail: this._showReceiveEmail ? this._form.receiveEmail : false,
                 responseKey: this._responseKey,
             });
-            const data = { ...rawData, emailHashed: `${md5(rawData.email)}`, byAdmin: false };
+            const data = {
+                ...rawData,
+                emailHashed: `${md5(rawData.email)}`,
+                byAdmin: false,
+                avatar: null,
+            };
             if (data.parent >= 0) {
                 const parent = this._threadMap.get(data.parent).parent;
                 if (parent >= 0) {
