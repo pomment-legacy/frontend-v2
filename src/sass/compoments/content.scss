@@ -1,15 +1,15 @@
 div.pmnt-comment-tree > div.pmnt-comment:nth-child(odd) {
-    background-color: #f6f6f6;
+    background-color: rgba(0, 0, 0, 0.3);
     .info input {
-        box-shadow: inset 0 0 0 10em #f6f6f6;
+        box-shadow: inset 0 0 0 10em #222;
         &:focus {
-            box-shadow: inset 0 0 0 10em #eaeff6;
+            box-shadow: inset 0 0 0 10em #333;
         }
     }
     .content-wrapper {
-        background-color: #f6f6f6;
+        background-color: #222;
         &.active {
-            background-color: #eaeff6;
+            background-color: #333;
         }
     }
 }
@@ -25,7 +25,7 @@ div.pmnt-avatar {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    background-color: #fff;
+    background-color: #000;
     border-radius: 0.6em;
     position: absolute;
     left: 0.5em;
@@ -39,7 +39,7 @@ div.pmnt-avatar {
         display: flex;
         justify-content: center;
         align-items: center;
-        color: #bbb;
+        color: #333;
         &:before {
             content: "?";
         }
@@ -57,13 +57,13 @@ div.pmnt-entry {
         line-height: 1.6em;
     }
     a.name {
-        color: #000;
+        color: #ddd;
         font-weight: bold;
         text-decoration: none;
         &.nameless {
-            color: rgba(0, 0, 0, 0.4);
+            color: rgba(255, 255, 255, 0.4);
             &:hover, &:active {
-                color: rgba(0, 0, 0, 0.4);
+                color: rgba(255, 255, 255, 0.4);
                 text-decoration: none;
             }
         }
@@ -72,9 +72,9 @@ div.pmnt-entry {
             text-decoration: none;
         }
         &[href] {
-            color: #00f;
+            color: #ff9800;
             &:hover {
-                color: lighten($color: #00f, $amount: 22%);
+                color: lighten($color: #ff9800, $amount: 22%);
                 text-decoration: underline;
             }
         }
@@ -83,8 +83,8 @@ div.pmnt-entry {
         }
     }
     span.admin {
-        background-color: #9a9a9a;
-        color: #fff;
+        background-color: #222;
+        color: #777;
         padding: 0.24em 0.4em;
         border-radius: .25em;
         font-size: 0.9em;
@@ -94,18 +94,18 @@ div.pmnt-entry {
     a.reply-of {
         display: none;
         font-weight: bold;
-        color: rgba(0, 0, 0, 0.5);
+        color: rgba(255, 255, 255, 0.5);
         text-decoration: none;
         cursor: pointer;
         user-select: none;
         &:hover {
-            color: rgba(0, 0, 0, 0.8);
+            color: rgba(255, 255, 255, 0.8);
             text-decoration: underline;
         }
     }
     time {
         margin-left: 1em;
-        color: rgba(0, 0, 0, 0.36);
+        color: rgba(255, 255, 255, 0.36);
     }
     .text {
         line-height: 1.5em;
@@ -118,7 +118,7 @@ div.pmnt-entry {
         padding-top: .5em;
         padding-bottom: .5em;
         border: 0;
-        border-top: .0625rem #ccc dashed;
+        border-top: .0625rem #484848 dashed;
         li {
             display: inline-block;
             &:not(:nth-child(1)) {
@@ -129,7 +129,7 @@ div.pmnt-entry {
                 content: "|";
                 width: 1.6em;
                 text-align: center;
-                color: rgba(0, 0, 0, 0.2);
+                color: rgba(255, 255, 255, 0.2);
             }
             a {
                 color: #2f90e4;
@@ -146,7 +146,7 @@ div.pmnt-entry {
 }
 
 div.pmnt-comment-nest {
-    border-left: #c1c1c1 0.25em solid;
+    border-left: #444 0.25em solid;
     div.pmnt-comment {
         background-color: transparent !important;
         div.pmnt-entry {

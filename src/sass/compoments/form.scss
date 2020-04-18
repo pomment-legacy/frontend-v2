@@ -17,9 +17,9 @@ div.pmnt-formbody {
                 outline: none;
             }
             &::placeholder {
-                color: #000;
-                font-weight: bold;
-                opacity: 0.47;
+                color: #fff;
+                // font-weight: bold;
+                opacity: 0.37;
             }
         }
         .info {
@@ -39,28 +39,34 @@ div.pmnt-formbody {
                     margin: 0.25em 0;
                 }
                 padding: 0.3em 0.3em;
-                border-bottom: 0.16em solid #e0e0e0;
-                box-shadow: inset 0 0 0 10em #fff;
+                border-bottom: .16em solid #444;
+                background-color: #222;
+                box-shadow: inset 0 0 0 10em #222;
                 transition:
                     border-bottom-color 0.17s,
+                    background-color 0.17s,
                     box-shadow 0.17s;
                 &:focus {
-                    border-bottom: .16em solid #4dadfc;
-                    box-shadow: inset 0 0 0 10em #f1f9ff;
+                    border-bottom: .16em solid #555;
+                    background-color: #333;
+                    box-shadow: inset 0 0 0 10em #333;
                 }
             }
         }
         .content-wrapper {
             padding: 0.3em 0.3em;
             margin: 0 0.25em;
-            border-bottom: 0.16em solid #e0e0e0;
-            background-color: #fff;
+            border-bottom: .16em solid #444;
+            background-color: #222;
+            box-shadow: inset 0 0 0 10em #222;
             transition:
                 border-bottom-color 0.17s,
-                background-color 0.17s;
+                background-color 0.17s,
+                box-shadow 0.17s;
             &.active {
-                border-bottom: .16em solid #4dadfc;
-                background-color: #f1f9ff;
+                border-bottom: .16em solid #555;
+                background-color: #333;
+                box-shadow: inset 0 0 0 10em #333;
             }
             textarea {
                 padding: 0;
@@ -84,20 +90,20 @@ div.pmnt-formbody {
             font-weight: bold;
             transition: opacity 0.3s, background-color 0.3s, box-shadow 0.3s;
             &.submit {
-                background-color: #29b6f6;
+                background-color: darken($color: #29b6f6, $amount: 9%);
                 box-shadow: 0 0 0.6em 0 rgba(0, 134, 195, 0);
                 &:focus {
                     outline: none;
-                    background-color: #0086c3;
+                    background-color: darken(#0086c3, $amount: 9%);
                     box-shadow: 0 0 0.6em 0 rgba(0, 134, 195, 0.55);
                 }
             }
             &.cancel {
-                background-color: #f44336;
+                background-color: darken(#f44336, $amount: 9%);
                 box-shadow: 0 0 0.6em 0 rgba(186, 0, 12, 0);
                 &:focus {
                     outline: none;
-                    background-color: #ba000d;
+                    background-color: darken(#ba000d, $amount: 9%);
                     box-shadow: 0 0 0.6em 0 rgba(186, 0, 12, 0.55);
                 }
             }
@@ -107,7 +113,7 @@ div.pmnt-formbody {
             margin-left: 0.5em;
             line-height: 2em;
             .magic-checkbox:checked+label:before {
-                border: 1px solid #3e97eb;
+                border: 1px solid darken($color: #3e97eb, $amount: 0);
             }
             .magic-checkbox+label:after {
                 width: 7.5px;
