@@ -21,9 +21,9 @@ const base = {
         name: 'PommentWidget',
         format: 'umd',
         sourcemap: (env !== 'production'),
-        // globals: {
-        //     '@pomment/sdk': 'Pomment',
-        // },
+        globals: {
+            crypto: 'crypto',
+        },
     },
     plugins: [
         progress({

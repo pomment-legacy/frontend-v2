@@ -10,28 +10,28 @@
   "author": "tcdw <tcdw2011@gmail.com>",
   "license": "BSD-3-Clause",
   "devDependencies": {
-    "autoprefixer": "^9.6.4",
-    "chokidar": "^3.2.1",
-    "cross-env": "^6.0.3",
+    "autoprefixer": "^9.7.6",
+    "chokidar": "^3.3.1",
+    "cross-env": "^7.0.2",
     "del-cli": "^3.0.0",
-    "eft-parser": "^0.9.6",
-    "eslint": "^6.5.1",
-    "eslint-config-airbnb-base": "^14.0.0",
-    "eslint-plugin-import": "^2.18.2",
-    "node-sass": "^4.12.0",
+    "eft-parser": "^0.10.6",
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb-base": "^14.1.0",
+    "eslint-plugin-import": "^2.20.2",
+    "node-sass": "^4.13.1",
     "postcss-clean": "^1.1.0",
-    "rollup": "^1.23.1",
+    "rollup": "^2.6.1",
     "rollup-plugin-buble": "^0.19.8",
     "rollup-plugin-commonjs": "^10.1.0",
-    "rollup-plugin-eft": "^0.3.0",
+    "rollup-plugin-eft": "^0.10.6",
     "rollup-plugin-eslint": "^7.0.0",
     "rollup-plugin-json": "^4.0.0",
     "rollup-plugin-node-resolve": "^5.2.0",
     "rollup-plugin-nodent": "^0.2.2",
-    "rollup-plugin-postcss": "^2.0.3",
+    "rollup-plugin-postcss": "^2.6.4",
     "rollup-plugin-progress": "^1.1.1",
     "rollup-plugin-replace": "^2.2.0",
-    "rollup-plugin-uglify": "^6.0.3"
+    "rollup-plugin-uglify": "^6.0.4"
   },
   "scripts": {
     "dev": "rollup -c ./scripts/rollup.config.js -w",
@@ -41,8 +41,8 @@
     "clean": "del-cli dist/*.js dist/*.css"
   },
   "dependencies": {
-    "crypto-js": "^3.1.9-1",
-    "ef-core": "^0.9.7",
+    "crypto-js": "^4.0.0",
+    "ef-core": "^0.10.6",
     "magic-check": "^1.0.3",
     "pomment-sdk": "^2.2.0"
   }
