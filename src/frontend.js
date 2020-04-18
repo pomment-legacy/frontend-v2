@@ -192,7 +192,7 @@ class PommentWidget extends Main {
 
     _moveFormTo(props) {
         this._form.$umount();
-        const id = props.value;
+        const { id } = props.state.$data;
         this._currentTarget = id;
         if (id < 0) {
             if (process.env.NODE_ENV !== 'production') {
