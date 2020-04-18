@@ -192,7 +192,10 @@ class PommentWidget extends Main {
 
     _moveFormTo(props) {
         this._form.$umount();
-        const { id } = props.state.$data;
+        let id = -1;
+        if (typeof props !== 'undefined' && props !== null) {
+            id = props.state.$data;
+        }
         this._currentTarget = id;
         if (id < 0) {
             if (process.env.NODE_ENV !== 'production') {
@@ -229,11 +232,8 @@ class PommentWidget extends Main {
     }
 
     _cancelReplyOther() {
-        this._currentTarget = -1;
         this._headerMessage = null;
-        this._moveFormTo({
-            value: -1,
-        });
+        this._moveFormTo();
     }
 
     async _submit() {
