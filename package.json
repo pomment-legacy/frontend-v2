@@ -1,6 +1,6 @@
 {
   "name": "pomment-frontend",
-  "version": "2.2.4",
+  "version": "2.2.5",
   "description": "Default user interface of Pomment",
   "main": "./src/frontend.js",
   "repository": {
