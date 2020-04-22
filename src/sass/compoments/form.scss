@@ -51,6 +51,14 @@ div.pmnt-formbody {
                     background-color: #333;
                     box-shadow: inset 0 0 0 10em #333;
                 }
+                &:-webkit-autofill,
+                &:-webkit-autofill:hover,
+                &:-webkit-autofill:focus {
+                    -webkit-text-fill-color: #fff;
+                    box-shadow: inset 0 0 0 10em #00363a;
+                    background-color: #00363a;
+                    border-bottom: .16em solid #006064;
+                }
             }
         }
         .content-wrapper {
@@ -120,8 +128,9 @@ div.pmnt-formbody {
                 height: 14px;
             }
             .magic-checkbox+label:before, .magic-radio+label:before {
-                top: 4px;
+                top: 3px;
                 transition: background-color 0.2s, border 0.2s;
+                border: 1px solid #666;
             }
             .magic-checkbox+label:after {
                 top: 6px;

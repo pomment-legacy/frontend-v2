@@ -29,7 +29,7 @@
                 >ul
                     >li
                         >a
-                            @click = reply:{{id}}
+                            @click = reply
                             .{{reply}}
     -form
     >div.pmnt-comment-nest
