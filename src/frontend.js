@@ -194,7 +194,7 @@ class PommentWidget extends Main {
         this._form.$umount();
         let id = -1;
         if (typeof props !== 'undefined' && props !== null) {
-            id = props.state.$data;
+            id = props.state.$data.id;
         }
         this._currentTarget = id;
         if (id < 0) {
