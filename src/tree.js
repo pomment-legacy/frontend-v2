@@ -12,7 +12,7 @@ function findWithAttr(arr, attr, value) {
             }
         }
     }
-    return -1;
+    return null;
 }
 
 function makeTree(dataArr) {
@@ -22,8 +22,8 @@ function makeTree(dataArr) {
     }
     let i = 0;
     while (i < data.length) {
-        if (data[i].parent && data[i].parent >= 0) {
-            const targetPos = findWithAttr(data, 'id', data[i].parent);
+        if (data[i].parent) {
+            const targetPos = findWithAttr(data, 'uuid', data[i].parent);
             if (data[targetPos]) {
                 if (!data[targetPos].sub) data[targetPos].sub = [];
                 data[targetPos].sub.push(data[i]);

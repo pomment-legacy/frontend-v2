@@ -16,7 +16,7 @@ const env = process.env.NODE_ENV;
 const base = {
     input: 'src/frontend.js',
     output: {
-        file: `dist/pomment-frontend${env === 'production' ? '.min.' : '.dev.'}js`,
+        file: 'dist/pomment-frontend.min.js',
         name: 'PommentWidget',
         format: 'umd',
         sourcemap: (env !== 'production'),

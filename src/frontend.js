@@ -1,7 +1,6 @@
 /* global grecaptcha */
 
 import './sass/frontend.scss';
-import Pomment from 'pomment-sdk';
 import md5 from 'crypto-js/md5';
 import Main from './compoments/index.eft';
 import Bar from './compoments/bar/bar.eft';
@@ -17,7 +16,6 @@ import strSizeof from './utils/str-sizeof';
 class PommentWidget extends Main {
     constructor(props) {
         super(props);
-        this.SDKProvider = props.SDKProvider || Pomment;
         this.avatarPrefix = props.avatarPrefix || 'https://secure.gravatar.com/avatar/';
         this.adminName = props.adminName;
         this.adminAvatar = props.adminAvatar;
@@ -28,12 +26,10 @@ class PommentWidget extends Main {
         this._threadData = {};
         this._threadElementMap = new Map();
         this._threadMap = new Map();
-        this._sdk = new this.SDKProvider({
-            server: props.server,
-            defaultURL: props.url,
-            defaultTitle: props.title,
-        });
-        this._currentTarget = -1;
+        this._server = props.server;
+        this._url = props.url;
+        this._title = props.title;
+        this._currentTarget = null;
         this._responseKey = null;
         this.$data.poweredBy = UIStrings.POMMENT_POWERED_BY;
         Object.keys(this).forEach((e) => {
@@ -60,7 +56,19 @@ class PommentWidget extends Main {
                     message: UIStrings.POMMENT_LOADING,
                 },
             });
-            const rawThreadData = await this._sdk.listComments();
+            const rawThreadDataLoader = await fetch(`${this._server}/v3/list`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    url: this._url,
+                }),
+            });
+            if (!rawThreadDataLoader.ok) {
+                throw new Error(`Server returned ${rawThreadDataLoader.status}`);
+            }
+            const rawThreadData = await rawThreadDataLoader.json();
             this._loaded = true;
             this._form = new Form({
                 root: this,
@@ -135,12 +143,12 @@ class PommentWidget extends Main {
                 reply: this._moveFormTo.bind(this),
             },
             $data: {
-                id: e.id,
+                id: e.uuid,
                 name,
                 avatar,
                 website,
                 content: e.content,
-                datetime: e.createdAt.toISOString(),
+                datetime: new Date(e.createdAt).toISOString(),
                 date: timeSince(e.createdAt),
                 admin: UIStrings.ENTRY_ADMIN,
                 adminHidden: e.byAdmin ? '' : 'hidden',
@@ -157,8 +165,8 @@ class PommentWidget extends Main {
                 parentName,
             });
         }
-        this._threadMap.set(e.id, e);
-        this._threadElementMap.set(e.id, singleItem);
+        this._threadMap.set(e.uuid, e);
+        this._threadElementMap.set(e.uuid, singleItem);
         return singleItem;
     }
 
@@ -185,19 +193,19 @@ class PommentWidget extends Main {
     }
 
     _jumpToCurrent() {
-        if (this._currentTarget >= 0) {
+        if (this._currentTarget) {
             this._jumpTo({ value: this._currentTarget });
         }
     }
 
     _moveFormTo(props) {
         this._form.$umount();
-        let id = -1;
+        let id = null;
         if (typeof props !== 'undefined' && props !== null) {
             id = props.state.$data.id;
         }
         this._currentTarget = id;
-        if (id < 0) {
+        if (id === null) {
             if (process.env.NODE_ENV !== 'production') {
                 console.info('[Pomment]', 'Form will be moved to default position');
             }
@@ -264,24 +272,36 @@ class PommentWidget extends Main {
         this._form.$data.disabled = 'disabled';
         this._form.contentWrapper.$data.disabled = 'disabled';
         try {
-            const rawData = await this._sdk.submitComment({
-                parent: this._currentTarget,
-                name: this._form.name,
-                email: this._form.email,
-                website: this._form.website,
-                content: this._form.content,
-                receiveEmail: this._showReceiveEmail ? this._form.receiveEmail : false,
-                responseKey: this._responseKey,
+            const rawDataLoader = await fetch(`${this._server}/v3/submit`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    title: this._title,
+                    url: this._url,
+                    name: this._form.name,
+                    email: this._form.email,
+                    website: this._form.website,
+                    parent: this._currentTarget,
+                    content: this._form.content,
+                    receiveEmail: this._showReceiveEmail ? this._form.receiveEmail : false,
+                    responseKey: this._responseKey,
+                }),
             });
+            if (!rawDataLoader.ok) {
+                throw new Error(`Server returned ${rawDataLoader.status}`);
+            }
+            const rawData = await rawDataLoader.json();
             const data = {
                 ...rawData,
                 emailHashed: `${md5(rawData.email)}`,
                 byAdmin: false,
                 avatar: null,
             };
-            if (data.parent >= 0) {
+            if (data.parent) {
                 const parent = this._threadMap.get(data.parent).parent;
-                if (parent >= 0) {
+                if (parent) {
                     // 新增加的评论隶属于隶属于其它评论的评论
                     const root = this._threadElementMap.get(parent);
                     const newElem = this._printEntry(data, true);
@@ -290,7 +310,7 @@ class PommentWidget extends Main {
                     // 新增加的评论隶属于独立的评论
                     const root = this._threadElementMap.get(data.parent);
                     const newElem = this._printEntry(data, true);
-                    root.subComments = [newElem];
+                    root.subComments.push(newElem);
                 }
             } else {
                 // 新增加的评论不隶属于任何评论

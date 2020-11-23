@@ -11,7 +11,9 @@
     body {
         margin-left: 0;
         margin-right: 0;
-        @media screen and (prefers-color-scheme: dark) {
+    }
+    @media screen and (prefers-color-scheme: dark) {
+        body {
             background-color: #000;
             color: #ccc;
         }
@@ -28,7 +30,7 @@
         adminName: 'tcdw',
         adminAvatar: 'https://www.tcdw.net/static/tcdw.jpg',
         title: 'Xperia XZ Premium',
-        avatarPrefix: 'https://cdn.v2ex.com/gravatar/'
+        // avatarPrefix: 'https://cdn.v2ex.com/gravatar/'
     });
     plugin.$mount({
         target: document.getElementById("main"),

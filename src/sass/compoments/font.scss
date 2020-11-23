@@ -14,5 +14,8 @@
         "SimSun",
         sans-serif;
     letter-spacing: 0.05em;
-    color: #bbb;
+    color: #000;
+    @media screen and (prefers-color-scheme: dark) {
+        color: #bbb;
+    }
 }

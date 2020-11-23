@@ -34,9 +34,8 @@
     "rollup-plugin-terser": "^7.0.2"
   },
   "scripts": {
-    "dev": "rollup -c ./scripts/rollup.config.js -w",
+    "serve": "rollup -c ./scripts/rollup.config.js -w",
     "build": "del-cli dist/*.js dist/*.css dist/*.map && cross-env NODE_ENV=production rollup -c ./scripts/rollup.config.js",
-    "build-unofficial": "rollup -c ./scripts/rollup.config.js",
     "lint": "eslint --ext .js src",
     "clean": "del-cli dist/*.js dist/*.css"
   },
