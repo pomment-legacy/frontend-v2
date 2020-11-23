@@ -6,22 +6,24 @@
     <title></title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="renderer" content="webkit">
-    <link rel="stylesheet" href="pomment-frontend.dev.css">
+    <link rel="stylesheet" href="pomment-frontend.min.css">
     <style>
     body {
         margin-left: 0;
         margin-right: 0;
-        background-color: #000;
-        color: #ccc;
+        @media screen and (prefers-color-scheme: dark) {
+            background-color: #000;
+            color: #ccc;
+        }
     }
     </style>
 </head>
 <body>
     <div style="max-width: 800px; margin: 0 auto;" id="main"></div>
-    <script src="pomment-frontend.dev.js"></script>
+    <script src="pomment-frontend.min.js"></script>
     <script>
     var plugin = new PommentWidget({
-        server: 'http://127.0.0.1:5005',
+        server: 'http://127.0.0.1:5000',
         url: 'https://www.tcdw.net/post/about/',
         adminName: 'tcdw',
         adminAvatar: 'https://www.tcdw.net/static/tcdw.jpg',
