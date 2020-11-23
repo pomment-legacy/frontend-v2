@@ -1,9 +1,8 @@
-import buble from 'rollup-plugin-buble';
 import { eslint } from 'rollup-plugin-eslint';
 import resolve from 'rollup-plugin-node-resolve';
 import commonjs from 'rollup-plugin-commonjs';
 import replace from 'rollup-plugin-replace';
-import { uglify } from 'rollup-plugin-uglify';
+import { terser } from 'rollup-plugin-terser';
 import progress from 'rollup-plugin-progress';
 import json from 'rollup-plugin-json';
 import nodent from 'rollup-plugin-nodent';
@@ -25,6 +24,7 @@ const base = {
             crypto: 'crypto',
         },
     },
+    external: ['crypto'],
     plugins: [
         progress({
             clearLine: false,
@@ -49,17 +49,10 @@ const base = {
             promises: true,
             noRuntime: true,
         }),
-        buble({
-            transforms: {
-                modules: false,
-                dangerousForOf: true,
-            },
-            objectAssign: 'Object.assign',
-        }),
         replace({
             'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development'),
         }),
-        uglify(),
+        terser(),
     ],
 };
 
