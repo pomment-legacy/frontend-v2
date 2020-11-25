@@ -1,5 +1,5 @@
 function timeSince(date) {
-    return date.toLocaleDateString();
+    return new Date(date).toLocaleDateString();
 }
 
 export default timeSince;

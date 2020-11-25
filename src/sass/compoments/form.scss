@@ -11,15 +11,23 @@ div.pmnt-formbody {
             margin: 0.25em;
             font-size: 1em;
             box-sizing: border-box;
-            color: #ddd;
+            color: #000;
+            @media screen and (prefers-color-scheme: dark) {
+                color: #ddd;
+            }
             line-height: 1.5em;
             &:focus {
                 outline: none;
             }
             &::placeholder {
+                color: #000;
+                font-weight: bold;
+                opacity: 0.47;
+                @media screen and (prefers-color-scheme: dark) {
                 color: #fff;
                 // font-weight: bold;
                 opacity: 0.37;
+                }
             }
         }
         .info {
@@ -39,42 +47,60 @@ div.pmnt-formbody {
                     margin: 0.25em 0;
                 }
                 padding: 0.3em 0.3em;
-                border-bottom: .16em solid #444;
-                background-color: #222;
-                box-shadow: inset 0 0 0 10em #222;
+                border-bottom: 0.16em solid #e0e0e0;
+                box-shadow: inset 0 0 0 10em #fff;
+                @media screen and (prefers-color-scheme: dark) {
+                    border-bottom: .16em solid #444;
+                    background-color: #222;
+                    box-shadow: inset 0 0 0 10em #222;
+                }
                 transition:
                     border-bottom-color 0.17s,
                     background-color 0.17s,
                     box-shadow 0.17s;
                 &:focus {
-                    border-bottom: .16em solid #555;
-                    background-color: #333;
-                    box-shadow: inset 0 0 0 10em #333;
+                    border-bottom: .16em solid #4dadfc;
+                    box-shadow: inset 0 0 0 10em #f1f9ff;
+                    @media screen and (prefers-color-scheme: dark) {
+                        border-bottom: .16em solid #555;
+                        background-color: #333;
+                        box-shadow: inset 0 0 0 10em #333;
+                    }
                 }
-                &:-webkit-autofill,
-                &:-webkit-autofill:hover,
-                &:-webkit-autofill:focus {
-                    -webkit-text-fill-color: #fff;
-                    box-shadow: inset 0 0 0 10em #00363a;
-                    background-color: #00363a;
-                    border-bottom: .16em solid #006064;
+                @media screen and (prefers-color-scheme: dark) {
+                    &:-webkit-autofill,
+                    &:-webkit-autofill:hover,
+                    &:-webkit-autofill:focus {
+                        -webkit-text-fill-color: #fff;
+                        box-shadow: inset 0 0 0 10em #00363a;
+                        background-color: #00363a;
+                        border-bottom: .16em solid #006064;
+                    }
                 }
             }
         }
         .content-wrapper {
             padding: 0.3em 0.3em;
-            margin: .25em .25em 0 .25em;
-            border-bottom: .16em solid #444;
-            background-color: #222;
-            box-shadow: inset 0 0 0 10em #222;
+            margin: 0 0.25em;
+            border-bottom: 0.16em solid #e0e0e0;
+            background-color: #fff;
+            @media screen and (prefers-color-scheme: dark) {
+                border-bottom: .16em solid #444;
+                background-color: #222;
+                box-shadow: inset 0 0 0 10em #222;
+            }
             transition:
                 border-bottom-color 0.17s,
                 background-color 0.17s,
                 box-shadow 0.17s;
             &.active {
-                border-bottom: .16em solid #555;
-                background-color: #333;
-                box-shadow: inset 0 0 0 10em #333;
+                border-bottom: .16em solid #4dadfc;
+                background-color: #f1f9ff;
+                @media screen and (prefers-color-scheme: dark) {
+                    border-bottom: .16em solid #555;
+                    background-color: #333;
+                    box-shadow: inset 0 0 0 10em #333;
+                }
             }
             textarea {
                 padding: 0;
@@ -98,20 +124,32 @@ div.pmnt-formbody {
             font-weight: bold;
             transition: opacity 0.3s, background-color 0.3s, box-shadow 0.3s;
             &.submit {
-                background-color: darken($color: #29b6f6, $amount: 9%);
+                background-color: #29b6f6;
+                @media screen and (prefers-color-scheme: dark) {
+                    background-color: darken($color: #29b6f6, $amount: 9%);
+                }
                 box-shadow: 0 0 0.6em 0 rgba(0, 134, 195, 0);
                 &:focus {
                     outline: none;
-                    background-color: darken(#0086c3, $amount: 9%);
+                    background-color: #0086c3;
+                    @media screen and (prefers-color-scheme: dark) {
+                        background-color: darken(#0086c3, $amount: 9%);
+                    }
                     box-shadow: 0 0 0.6em 0 rgba(0, 134, 195, 0.55);
                 }
             }
             &.cancel {
-                background-color: darken(#f44336, $amount: 9%);
+                background-color: #f44336;
+                @media screen and (prefers-color-scheme: dark) {
+                    background-color: darken(#f44336, $amount: 9%);
+                }
                 box-shadow: 0 0 0.6em 0 rgba(186, 0, 12, 0);
                 &:focus {
                     outline: none;
-                    background-color: darken(#ba000d, $amount: 9%);
+                    background-color: #ba000d;
+                    @media screen and (prefers-color-scheme: dark) {
+                        background-color: darken(#ba000d, $amount: 9%);
+                    }
                     box-shadow: 0 0 0.6em 0 rgba(186, 0, 12, 0.55);
                 }
             }
@@ -121,7 +159,10 @@ div.pmnt-formbody {
             margin-left: 0.5em;
             line-height: 2em;
             .magic-checkbox:checked+label:before {
-                border: 1px solid darken($color: #3e97eb, $amount: 0);
+                border: 1px solid #3e97eb;
+                @media screen and (prefers-color-scheme: dark) {
+                    border: 1px solid darken($color: #3e97eb, $amount: 0);
+                }
             }
             .magic-checkbox+label:after {
                 width: 7.5px;
@@ -130,7 +171,9 @@ div.pmnt-formbody {
             .magic-checkbox+label:before, .magic-radio+label:before {
                 top: 3px;
                 transition: background-color 0.2s, border 0.2s;
-                border: 1px solid #666;
+                @media screen and (prefers-color-scheme: dark) {
+                    border: 1px solid #666;
+                }
             }
             .magic-checkbox+label:after {
                 top: 6px;
@@ -138,7 +181,6 @@ div.pmnt-formbody {
         }
     }
 }
-
 div.pmnt-edit, div.pmnt-formbody form {
     padding: 0.25em;
 }
