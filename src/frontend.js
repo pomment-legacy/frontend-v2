@@ -27,8 +27,8 @@ class PommentWidget extends Main {
         this._threadElementMap = new Map();
         this._threadMap = new Map();
         this._server = props.server;
-        this._url = props.url;
-        this._title = props.title;
+        this._url = props.url || document.querySelector('link[rel=canonical]').href || document.location.href;
+        this._title = props.title || document.title;
         this._currentTarget = null;
         this._responseKey = null;
         this.$data.poweredBy = UIStrings.POMMENT_POWERED_BY;

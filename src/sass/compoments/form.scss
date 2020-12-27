@@ -8,7 +8,8 @@ div.pmnt-formbody {
             appearance: none;
             display: block;
             border: 0;
-            margin: 0.25em;
+            border-radius: 0;
+            // margin: 0.25em;
             font-size: 1em;
             box-sizing: border-box;
             color: #000;
@@ -35,7 +36,7 @@ div.pmnt-formbody {
                 display: flex;
             }
             @media not all and (min-width: 500px) {
-                margin: 0 .25em;
+                // margin: 0 .25em;
             }
             input {
                 @media (min-width: 500px) {
@@ -44,15 +45,15 @@ div.pmnt-formbody {
                 }
                 @media not all and (min-width: 500px) {
                     width: 100%;
-                    margin: 0.25em 0;
+                    // margin: 0.25em 0;
                 }
                 padding: 0.3em 0.3em;
                 border-bottom: 0.16em solid #e0e0e0;
                 box-shadow: inset 0 0 0 10em #fff;
                 @media screen and (prefers-color-scheme: dark) {
                     border-bottom: .16em solid #444;
-                    background-color: #222;
-                    box-shadow: inset 0 0 0 10em #222;
+                    background-color: #121212;
+                    box-shadow: inset 0 0 0 10em #121212;
                 }
                 transition:
                     border-bottom-color 0.17s,
@@ -63,8 +64,8 @@ div.pmnt-formbody {
                     box-shadow: inset 0 0 0 10em #f1f9ff;
                     @media screen and (prefers-color-scheme: dark) {
                         border-bottom: .16em solid #555;
-                        background-color: #333;
-                        box-shadow: inset 0 0 0 10em #333;
+                        background-color: #232323;
+                        box-shadow: inset 0 0 0 10em #232323;
                     }
                 }
                 @media screen and (prefers-color-scheme: dark) {
@@ -81,13 +82,13 @@ div.pmnt-formbody {
         }
         .content-wrapper {
             padding: 0.3em 0.3em;
-            margin: 0 0.25em;
+            // margin: 0 0.25em;
             border-bottom: 0.16em solid #e0e0e0;
             background-color: #fff;
             @media screen and (prefers-color-scheme: dark) {
                 border-bottom: .16em solid #444;
-                background-color: #222;
-                box-shadow: inset 0 0 0 10em #222;
+                background-color: #121212;
+                box-shadow: inset 0 0 0 10em #121212;
             }
             transition:
                 border-bottom-color 0.17s,
@@ -98,8 +99,8 @@ div.pmnt-formbody {
                 background-color: #f1f9ff;
                 @media screen and (prefers-color-scheme: dark) {
                     border-bottom: .16em solid #555;
-                    background-color: #333;
-                    box-shadow: inset 0 0 0 10em #333;
+                    background-color: #232323;
+                    box-shadow: inset 0 0 0 10em #232323;
                 }
             }
             textarea {
@@ -115,7 +116,7 @@ div.pmnt-formbody {
         button {
             appearance: none;
             padding: 0.5em 1.5em;
-            margin: 0.25em;
+            // margin: 0.25em;
             margin-top: 0.5em;
             border: 0;
             // border-radius: 0.3em;
@@ -182,5 +183,5 @@ div.pmnt-formbody {
     }
 }
 div.pmnt-edit, div.pmnt-formbody form {
-    padding: 0.25em;
+    padding: 0.5em;
 }
