@@ -14,7 +14,7 @@
                         #rel = nofollow
                         .{{name}}
                         >span.id
-                            . ({{id}})
+                            . ({{uuid}})
                     >a.reply-of
                         @click = jump:{{parent}}
                         .{{replyOf}}

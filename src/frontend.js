@@ -143,7 +143,7 @@ class PommentWidget extends Main {
                 reply: this._moveFormTo.bind(this),
             },
             $data: {
-                id: e.uuid,
+                uuid: e.uuid,
                 name,
                 avatar,
                 website,
@@ -184,8 +184,8 @@ class PommentWidget extends Main {
     }
 
     _jumpTo(props) {
-        const id = props.value;
-        const element = this._threadElementMap.get(id).$refs.comment;
+        const uuid = props.value;
+        const element = this._threadElementMap.get(uuid).$refs.comment;
         window.scrollTo({
             top: element.offsetTop - this.fixedHeight,
             behavior: 'smooth',
@@ -200,12 +200,12 @@ class PommentWidget extends Main {
 
     _moveFormTo(props) {
         this._form.$umount();
-        let id = null;
+        let uuid = null;
         if (typeof props !== 'undefined' && props !== null) {
-            id = props.state.$data.id;
+            uuid = props.state.$data.uuid;
         }
-        this._currentTarget = id;
-        if (id === null) {
+        this._currentTarget = uuid;
+        if (uuid === null) {
             if (process.env.NODE_ENV !== 'production') {
                 console.info('[Pomment]', 'Form will be moved to default position');
             }
@@ -214,14 +214,14 @@ class PommentWidget extends Main {
             return;
         }
         if (process.env.NODE_ENV !== 'production') {
-            console.info('[Pomment]', `Form will be moved to the bottom of ${id}`);
+            console.info('[Pomment]', `Form will be moved to the bottom of ${uuid}`);
         }
-        const element = this._threadElementMap.get(id);
+        const element = this._threadElementMap.get(uuid);
         element.form = this._form;
         this._form.$data.cancelHidden = '';
 
         // 在上方展示出『正在回复某人』的提示栏
-        const want = this._threadMap.get(id);
+        const want = this._threadMap.get(uuid);
         const name = want.byAdmin ? this.adminName : want.name;
         this._headerMessage = null;
         this._headerMessage = new Bar({
