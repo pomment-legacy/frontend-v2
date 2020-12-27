@@ -126,10 +126,10 @@ class PommentWidget extends Main {
                 try {
                     const url = new URL(website);
                     // eslint-disable-next-line no-script-url
-                    if (url.protocol === 'javascript:') {
-                        website = '';
-                    } else {
+                    if (url.protocol === 'http:' || url.protocol === 'https:') {
                         website = url.toString();
+                    } else {
+                        website = '';
                     }
                 } catch (err) {
                     website = `http://${website}`;
