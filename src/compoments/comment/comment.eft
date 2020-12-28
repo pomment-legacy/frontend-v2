@@ -1,9 +1,13 @@
 >div.pmnt-comment#comment
     >div.pmnt-avatar-item
         >div.pmnt-avatar
-            #aria-hidden = true
-            #style = background-image: url({{avatar}})
+            >img
+                #style = display: {{showAvatar}}
+                #src = {{avatar}}
+                #alt = {{name}}'s avatar
+                #loading = lazy
             >div.unknown-guy
+                #aria-hidden = true
                 #style = display: {{showUnknownAvatar}}
         >div.pmnt-content
             >div.pmnt-entry

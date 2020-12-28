@@ -1,3 +1,7 @@
+.grecaptcha-badge {
+    visibility: hidden;
+}
+
 div.pmnt-outer {
     @import './compoments/font.scss';
     @import './compoments/powered-by.scss';

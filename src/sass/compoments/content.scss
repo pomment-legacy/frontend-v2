@@ -35,9 +35,9 @@ div.pmnt-avatar-item {
 div.pmnt-avatar {
     width: 4em;
     height: 4em;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+    // background-size: cover;
+    // background-position: center;
+    // background-repeat: no-repeat;
     background-color: #fff;
     @media screen and (prefers-color-scheme: dark) {
         background-color: #000;
@@ -47,6 +47,11 @@ div.pmnt-avatar {
     left: 0.5em;
     top: 0.5em;
     box-shadow: 0 0.5em 1.4em rgba(0,0,0,.055);
+    img {
+        width: 4em;
+        height: 4em;
+        border-radius: 0.6em;
+    }
     .unknown-guy {
         display: none;
         width: 100%;

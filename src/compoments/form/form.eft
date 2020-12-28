@@ -2,8 +2,9 @@
     -message
     >div.pmnt-avatar-item
         >div.pmnt-avatar
-            #style = background-image: url({{avatar}})
-            #aria-hidden = true
+            >img
+                #src = {{avatar}}
+                #alt = my avatar
         >div.pmnt-content
             >div.pmnt-formbody
                 >form.{{disabled}}
@@ -30,6 +31,16 @@
                             %disabled = {{disabled}}
                             %value = {{website}}
                     -contentWrapper
+                    >div.recaptcha-notice.{{recaptchaHidden}}
+                        .This site is protected by reCAPTCHA and the Google 
+                        >a
+                            #href = https://policies.google.com/privacy
+                            .Privacy Policy
+                        . and 
+                        >a
+                            #href = https://policies.google.com/terms
+                            .Terms of Service
+                        . apply.
                     >button.submit
                         #type = submit
                         %disabled = {{disabled}}

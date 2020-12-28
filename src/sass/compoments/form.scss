@@ -113,6 +113,22 @@ div.pmnt-formbody {
                 overflow: hidden;
             }
         }
+        .recaptcha-notice {
+            line-height: 1.2rem;
+            font-size: 0.75rem;
+            padding-top: 0.3rem;
+            color: #888;
+            a {
+                color: #888;
+                text-decoration: underline;
+            }
+            @media screen and (prefers-color-scheme: dark) {
+                color: #636363;
+                a {
+                    color: #636363;
+                }
+            }
+        }
         button {
             appearance: none;
             padding: 0.5em 1.5em;
@@ -157,7 +173,7 @@ div.pmnt-formbody {
         }
         div.receive-email {
             display: inline-block;
-            margin-left: 0.5em;
+            margin-left: 1em;
             line-height: 2em;
             .magic-checkbox:checked+label:before {
                 border: 1px solid #3e97eb;

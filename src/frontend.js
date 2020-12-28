@@ -74,6 +74,7 @@ class PommentWidget extends Main {
                 root: this,
                 $data: {
                     reHidden: this._showReceiveEmail ? '' : 'hidden',
+                    recaptchaHidden: this.reCAPTCHA ? '' : 'hidden',
                 },
                 $methods: {
                     cancel: this._cancelReplyOther.bind(this),
@@ -154,6 +155,7 @@ class PommentWidget extends Main {
                 adminHidden: e.byAdmin ? '' : 'hidden',
                 parent: e.parent,
                 reply: UIStrings.ENTRY_REPLY,
+                showAvatar: showAvatar ? 'block' : 'none',
                 showUnknownAvatar: showAvatar ? 'none' : 'flex',
                 nameless: showAvatar ? '' : 'nameless',
             },
