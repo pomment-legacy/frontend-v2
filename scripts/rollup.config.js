@@ -8,7 +8,7 @@ import json from 'rollup-plugin-json';
 import nodent from 'rollup-plugin-nodent';
 import eft from 'rollup-plugin-eft';
 import autoprefixer from 'autoprefixer';
-import clean from 'postcss-clean';
+import cssnano from 'cssnano';
 import postCSS from 'rollup-plugin-postcss';
 
 const env = process.env.NODE_ENV;
@@ -38,7 +38,9 @@ const base = {
             extract: true,
             plugins: [
                 autoprefixer(),
-                clean(),
+                cssnano({
+                    preset: 'default',
+                }),
             ],
         }),
         eslint({
