@@ -1,4 +1,4 @@
->div.pmnt-outer
+>div.pmnt-outer.{{lockedHidden}}
     >div.pmnt-main
         -_headerMessage
         -_defaultForm
