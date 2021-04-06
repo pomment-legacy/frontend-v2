@@ -32,6 +32,7 @@ class PommentWidget extends Main {
         this._currentTarget = null;
         this._responseKey = null;
         this.$data.poweredBy = UIStrings.POMMENT_POWERED_BY;
+        this.$data.lockedHidden = '';
         Object.keys(this).forEach((e) => {
             Object.defineProperty(this, e, {
                 enumerable: false,
@@ -90,6 +91,9 @@ class PommentWidget extends Main {
             this._form.area.value = '';
             this._threadData = makeTree(rawThreadData.content);
             this._printList();
+            if (rawThreadData.locked && rawThreadData.content.length <= 0) {
+                this.$data.lockedHidden = 'hidden';
+            }
         } catch (e) {
             this._headerMessage = new Bar({
                 $data: {
